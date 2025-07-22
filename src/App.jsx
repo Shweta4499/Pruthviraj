@@ -1,29 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
-
-import { About, Contact,Experience, Hero, Navbar, Tech, Works, StarsCanvas} from "./components";
-import Certificates from "./components/Certificates";
+// src/App.jsx
+import { Routes, Route } from "react-router-dom";
 import AchievementPage from "./pages/AchievementPage";
+import HomePage from "./pages/HomePage";
 
 const App = () => {
   return (
-      <div className='relative z-0 bg-primary'>
-        <div className='bg-hero-pattern bg-cover bg-no-repeat bg-center'>
-          <Navbar />
-          <Hero />
-        </div>
-        <About />
-         <Certificates />
-        <Experience/>
-        <Tech />
-<section id="project" className="relative z-10 pt-[100px] px-4 sm:px-10 lg:px-8">
-  <Works />
-</section>
-        <div className='relative z-0'>
-          <Contact />
-          <StarsCanvas />
-        </div>
-      </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/achievements" element={<AchievementPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;
