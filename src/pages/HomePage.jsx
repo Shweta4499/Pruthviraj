@@ -1,5 +1,5 @@
 // src/pages/HomePage.jsx
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, StarsCanvas } from "../components";
+import { About, Contact, Experience, Hero, Navbar, Works, StarsCanvas } from "../components";
 import Certificates from "../components/Certificates";
 
 const HomePage = () => {
@@ -12,7 +12,6 @@ const HomePage = () => {
       <About />
       <Certificates />
       <Experience />
-      <Tech />
       <section id="project" className="relative z-10 pt-[100px] px-4 sm:px-10 lg:px-8">
         <Works />
       </section>

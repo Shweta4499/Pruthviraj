@@ -21,7 +21,7 @@ const certificates = [
 
 const Certificates = () => {
   return (
-    <section id="certificates" className="py-20 bg-[#000000] text-white">
+    <section id="certificates" className="py-20  text-white">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-10 text-[#915EFF]">
           Certificates

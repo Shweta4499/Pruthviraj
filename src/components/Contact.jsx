@@ -72,8 +72,16 @@ const Contact = () => {
       
   };
 
-  return (
-<div className="mt-6 xl:mt-4 flex xl:flex-row flex-col-reverse gap-8 overflow-hidden">
+
+return (
+  <div className="relative w-full overflow-hidden">
+    {/* 🛸 Spaceship in Background Only on Mobile */}
+    <div className="absolute inset-0 z-0 block sm:hidden opacity-30 blur-[2px] pointer-events-none">
+      <SpaceshipCanvas isTyping={isTyping} triggerLaunch={triggerLaunch} />
+    </div>
+
+    {/* Main layout: Desktop → side-by-side | Mobile → stacked */}
+    <div className="mt-4 xl:mt-4 flex xl:flex-row flex-col-reverse gap-2 relative z-10">
       {/* Contact Form */}
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
@@ -81,91 +89,83 @@ const Contact = () => {
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
-<form
-  ref={formRef}
-  onSubmit={handleSubmit}
-  className="mt-12 flex flex-col gap-8"
->
-  {["name", "email", "message"].map((field) => (
-    <label key={field} className="flex flex-col">
-      <span className="text-white font-medium mb-4">
-        {field === "message"
-          ? "Your Message"
-          : `Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
-      </span>
-      {field === "message" ? (
-        <textarea
-          rows={7}
-          name={field}
-          value={form[field]}
-          onChange={handleChange}
-          placeholder="What do you want to say?"
-          className="bg-[#1a1a2e] py-4 px-6 placeholder:text-[#888] text-white rounded-lg outline-none border border-[#2e2e3e] focus:ring-2 focus:ring-[#915EFF] transition-all duration-300"
-        />
-      ) : (
-        <input
-          type={field === "email" ? "email" : "text"}
-          name={field}
-          value={form[field]}
-          onChange={handleChange}
-          placeholder={`Enter your ${field}`}
-          className="bg-[#1a1a2e] py-4 px-6 placeholder:text-[#888] text-white rounded-lg outline-none border border-[#2e2e3e] focus:ring-2 focus:ring-[#915EFF] transition-all duration-300"
-        />
-      )}
-    </label>
-  ))}
 
-  <button
-    type="submit"
-    className="bg-[#915EFF] py-3 px-8 rounded-xl outline-none w-fit self-center text-white font-bold shadow-md hover:shadow-[0_0_20px_#915EFF] transition-all duration-300"
-  >
-    {loading ? "Sending..." : "Send"}
-  </button>
-</form>
+        {/* Form */}
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className="mt-10 flex flex-col gap-2"
+        >
+          {["name", "email", "message"].map((field) => (
+            <label key={field} className="flex flex-col">
+              <span className="text-white font-medium mb-4">
+                {field === "message"
+                  ? "Your Message"
+                  : `Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+              </span>
+              {field === "message" ? (
+                <textarea
+                  rows={7}
+                  name={field}
+                  value={form[field]}
+                  onChange={handleChange}
+                  placeholder="What do you want to say?"
+                  className="bg-[#1a1a2e] py-4 px-6 placeholder:text-[#888] text-white rounded-lg outline-none border border-[#2e2e3e] focus:ring-2 focus:ring-[#915EFF] transition-all duration-300"
+                />
+              ) : (
+                <input
+                  type={field === "email" ? "email" : "text"}
+                  name={field}
+                  value={form[field]}
+                  onChange={handleChange}
+                  placeholder={`Enter your ${field}`}
+                  className="bg-[#1a1a2e] py-4 px-6 placeholder:text-[#888] text-white rounded-lg outline-none border border-[#2e2e3e] focus:ring-2 focus:ring-[#915EFF] transition-all duration-300"
+                />
+              )}
+            </label>
+          ))}
 
+          <button
+            type="submit"
+            className="bg-[#915EFF] py-3 px-8 rounded-xl outline-none w-fit self-center text-white font-bold shadow-md hover:shadow-[0_0_20px_#915EFF] transition-all duration-300"
+          >
+            {loading ? "Sending..." : "Send"}
+          </button>
+        </form>
 
         {/* Social Media Icons */}
-    <motion.div className="w-full mt-10 flex justify-center items-center flex-col gap-4 bg-black-200 py-6 rounded-lg">
-  <p className="text-white text-lg font-semibold mb-2">Connect with me</p>
-  <div className="flex gap-5">
-
-            <a href="https://github.com/KulboyRaj" target="_blank" rel="noopener noreferrer">
-              <img src={github} alt="GitHub" 
-  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
-            </a>
-            <a href="https://linkedin.com/in/pruthviraj-banne" target="_blank" rel="noopener noreferrer">
-              <img src={linkedin} alt="LinkedIn"
-  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
-            </a>
-            <a href="https://twitter.com/KulboyRaj" target="_blank" rel="noopener noreferrer">
-              <img src={twitter} alt="Twitter" 
-  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
-            </a>
-            <a href="https://youtube.com/@pruthvirajbanne229" target="_blank" rel="noopener noreferrer">
-              <img src={youtube} alt="YouTube"
-  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
-            </a>
-            <a href="https://facebook.com/vijaya.banne" target="_blank" rel="noopener noreferrer">
-              <img src={facebook} alt="Facebook" 
-  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
-            </a>
-            <a href="https://instagram.com/kulboyraj" target="_blank" rel="noopener noreferrer">
-              <img src={instagram} alt="Instagram" 
-  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
-            </a>
+        <motion.div className="w-full mt-10 flex justify-center items-center flex-col gap-4 bg-black-200 py-6 rounded-lg">
+          <p className="text-white text-lg font-semibold mb-2">Connect with me</p>
+          <div className="flex gap-5">
+            {[
+              { href: "https://github.com/KulboyRaj", src: github, alt: "GitHub" },
+              { href: "https://linkedin.com/in/pruthviraj-banne", src: linkedin, alt: "LinkedIn" },
+              { href: "https://twitter.com/KulboyRaj", src: twitter, alt: "Twitter" },
+              { href: "https://youtube.com/@pruthvirajbanne229", src: youtube, alt: "YouTube" },
+              { href: "https://facebook.com/vijaya.banne", src: facebook, alt: "Facebook" },
+              { href: "https://instagram.com/kulboyraj", src: instagram, alt: "Instagram" },
+            ].map(({ href, src, alt }) => (
+              <a key={alt} href={href} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={src}
+                  alt={alt}
+                  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"
+                />
+              </a>
+            ))}
           </div>
         </motion.div>
       </motion.div>
 
-      {/* 3D Spaceship Canvas */}
+      {/* Desktop Spaceship (Visible only on sm+) */}
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px] hidden sm:block"
       >
         <SpaceshipCanvas isTyping={isTyping} triggerLaunch={triggerLaunch} />
       </motion.div>
     </div>
-  );
-};
-
+  </div>
+);
+}
 export default SectionWrapper(Contact, "contact");

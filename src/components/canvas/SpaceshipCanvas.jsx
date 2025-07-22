@@ -62,7 +62,7 @@ const SpaceshipModel = ({ triggerLaunch, isTyping }) => {
 
 const SpaceshipCanvas = ({ triggerLaunch, isTyping }) => {
   return (
-    <Canvas camera={{ position: [0, 5, 30], fov: 75 }}>
+    <Canvas camera={{ position: [0, 0, 30], fov: 75 }}>
       <Suspense fallback={null}>
         <ambientLight intensity={2.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
