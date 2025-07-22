@@ -1,0 +1,171 @@
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { styles } from "../styles";
+import { SectionWrapper } from "../hoc";
+import { slideIn } from "../utils/motion";
+import SpaceshipCanvas from "./canvas/SpaceshipCanvas";
+
+import github from "../assets/social_media/github.png";
+import linkedin from "../assets/social_media/linkedine.png";
+import twitter from "../assets/social_media/twitter.png";
+import youtube from "../assets/social_media/youtube.png";
+import facebook from "../assets/social_media/facebook.png";
+import instagram from "../assets/social_media/instagram.png";
+
+
+
+const Contact = () => {
+  const formRef = useRef();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [triggerLaunch, setTriggerLaunch] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    if (!isTyping) setIsTyping(true);
+
+    clearTimeout(window.typingTimeout);
+    window.typingTimeout = setTimeout(() => {
+      setIsTyping(false);
+    }, 1200);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTriggerLaunch(true);
+
+    emailjs.send(
+
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+
+        
+        {
+          from_name: form.name,
+          to_name: "Pruthviraj",
+          from_email: form.email,
+          to_email: "kulboyraj23@gmail.com",
+          message: form.message,
+        },
+        import.meta.env.VITE_EMAILJS_USER_ID
+        
+      )
+      .then(
+        () => {
+          setLoading(false);
+          alert("🚀 Message beamed up successfully!");
+          setForm({ name: "", email: "", message: "" });
+          setIsTyping(false);
+          setTimeout(() => setTriggerLaunch(false), 10000);
+        },
+        (error) => {
+          setLoading(false);
+          console.error(error);
+          alert("Something went wrong. Please try again.");
+        }
+      );
+
+      
+  };
+
+  return (
+<div className="mt-6 xl:mt-4 flex xl:flex-row flex-col-reverse gap-8 overflow-hidden">
+      {/* Contact Form */}
+      <motion.div
+        variants={slideIn("left", "tween", 0.2, 1)}
+        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+      >
+        <p className={styles.sectionSubText}>Get in touch</p>
+        <h3 className={styles.sectionHeadText}>Contact.</h3>
+<form
+  ref={formRef}
+  onSubmit={handleSubmit}
+  className="mt-12 flex flex-col gap-8"
+>
+  {["name", "email", "message"].map((field) => (
+    <label key={field} className="flex flex-col">
+      <span className="text-white font-medium mb-4">
+        {field === "message"
+          ? "Your Message"
+          : `Your ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+      </span>
+      {field === "message" ? (
+        <textarea
+          rows={7}
+          name={field}
+          value={form[field]}
+          onChange={handleChange}
+          placeholder="What do you want to say?"
+          className="bg-[#1a1a2e] py-4 px-6 placeholder:text-[#888] text-white rounded-lg outline-none border border-[#2e2e3e] focus:ring-2 focus:ring-[#915EFF] transition-all duration-300"
+        />
+      ) : (
+        <input
+          type={field === "email" ? "email" : "text"}
+          name={field}
+          value={form[field]}
+          onChange={handleChange}
+          placeholder={`Enter your ${field}`}
+          className="bg-[#1a1a2e] py-4 px-6 placeholder:text-[#888] text-white rounded-lg outline-none border border-[#2e2e3e] focus:ring-2 focus:ring-[#915EFF] transition-all duration-300"
+        />
+      )}
+    </label>
+  ))}
+
+  <button
+    type="submit"
+    className="bg-[#915EFF] py-3 px-8 rounded-xl outline-none w-fit self-center text-white font-bold shadow-md hover:shadow-[0_0_20px_#915EFF] transition-all duration-300"
+  >
+    {loading ? "Sending..." : "Send"}
+  </button>
+</form>
+
+
+        {/* Social Media Icons */}
+    <motion.div className="w-full mt-10 flex justify-center items-center flex-col gap-4 bg-black-200 py-6 rounded-lg">
+  <p className="text-white text-lg font-semibold mb-2">Connect with me</p>
+  <div className="flex gap-5">
+
+            <a href="https://github.com/KulboyRaj" target="_blank" rel="noopener noreferrer">
+              <img src={github} alt="GitHub" 
+  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
+            </a>
+            <a href="https://linkedin.com/in/pruthviraj-banne" target="_blank" rel="noopener noreferrer">
+              <img src={linkedin} alt="LinkedIn"
+  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
+            </a>
+            <a href="https://twitter.com/KulboyRaj" target="_blank" rel="noopener noreferrer">
+              <img src={twitter} alt="Twitter" 
+  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
+            </a>
+            <a href="https://youtube.com/@pruthvirajbanne229" target="_blank" rel="noopener noreferrer">
+              <img src={youtube} alt="YouTube"
+  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
+            </a>
+            <a href="https://facebook.com/vijaya.banne" target="_blank" rel="noopener noreferrer">
+              <img src={facebook} alt="Facebook" 
+  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
+            </a>
+            <a href="https://instagram.com/kulboyraj" target="_blank" rel="noopener noreferrer">
+              <img src={instagram} alt="Instagram" 
+  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"/>
+            </a>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* 3D Spaceship Canvas */}
+      <motion.div
+        variants={slideIn("right", "tween", 0.2, 1)}
+        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+      >
+        <SpaceshipCanvas isTyping={isTyping} triggerLaunch={triggerLaunch} />
+      </motion.div>
+    </div>
+  );
+};
+
+export default SectionWrapper(Contact, "contact");
