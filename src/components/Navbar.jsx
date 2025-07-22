@@ -74,14 +74,13 @@ const Navbar = () => {
           </ul>
 
           {/* Achievements Link */}
-          <a
-            href='/achievements'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
-          >
-            Achievements
-          </a>
+          <Link
+  to='/achievements'
+  className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
+>
+  Achievements
+</Link>
+
 
           {/* Resume Button */}
           <a
@@ -123,15 +122,15 @@ const Navbar = () => {
 
               {/* Achievements (Mobile) */}
               <li>
-                <a
-                  href='/achievements'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='hover:text-[#915EFF] transition-colors duration-300'
-                >
-                  Achievements
-                </a>
-              </li>
+  <Link
+    to='/achievements'
+    onClick={() => setToggle(false)}
+    className='hover:text-[#915EFF] transition-colors duration-300'
+  >
+    Achievements
+  </Link>
+</li>
+
 
               {/* Resume (Mobile) */}
               <li>
