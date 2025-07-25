@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { styles } from "../styles";
-import { navLinks } from "../constants";
+import { Link, useLocation } from "react-router-dom";
+import { styles } from "../styles";// Custom tailwind style config
+import { navLinks } from "../constants";// Navbar ke link list
 import { file, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState(""); // Track karta hai kaunsa nav item active hai
+  const [toggle, setToggle] = useState(false);// Mobile menu open/close toggle
+  const [scrolled, setScrolled] = useState(false);// Scroll hone par navbar styling change karne ke liye
 
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+ // Scroll hone par navbar blue karne ka logic
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
@@ -16,14 +19,16 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  // Navbar item pe click hone par us section pe smooth scroll
   const handleNavClick = (id, title) => {
-    setActive(title);
-    if (id === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const section = document.getElementById(id);
-      section?.scrollIntoView({ behavior: "smooth" });
+    setActive(title); // Clicked item ko active mark karna
+    if (isHomePage) {
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const section = document.getElementById(id);
+        section?.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -37,13 +42,13 @@ const Navbar = () => {
       `}
     >
       <div className='max-w-7xl mx-auto flex justify-between items-center py-4'>
-        {/* Logo Section */}
-        <Link
+               {/* Logo & Name */}
+       <Link
           to='/'
           className='flex items-center gap-2'
           onClick={() => {
             setActive("");
-            window.scrollTo(0, 0);
+            window.scrollTo(0, 0);// Home click karne pe top pe le jao
           }}
         >
           <img
@@ -55,8 +60,7 @@ const Navbar = () => {
             PRUTHVIRAJ <span className='hidden sm:inline-block'>| BANNE</span>
           </p>
         </Link>
-
-        {/* Desktop Navigation */}
+ {/* Desktop Navigation */}
         <div className='hidden sm:flex gap-10 items-center text-[17px] font-medium'>
           <ul className='flex gap-10'>
             {navLinks.map((nav) => (
@@ -67,22 +71,23 @@ const Navbar = () => {
                   active === nav.title ? "text-white" : "text-gray-400"
                 } hover:text-[#915EFF] transition-colors duration-300`}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
+                {isHomePage ? (
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                ) : (
+                  <Link to='/'>{nav.title}</Link>
+                )}
                 <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#915EFF] group-hover:w-full transition-all duration-300"></span>
               </li>
             ))}
           </ul>
-
-          {/* Achievements Link */}
+ {/* Activities Page Link   yeh dusra route create krega jisse ye portfolio two pages ban gya*/}
           <Link
-  to='/achievements'
-  className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
->
-  Achievements
-</Link>
+            to='/activities'
+            className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
+          >
+            Activities
+          </Link>
 
-
-          {/* Resume Button */}
           <a
             href='/resume.pdf'
             target='_blank'
@@ -93,7 +98,6 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <div className='sm:hidden flex items-center'>
           <img
             src={toggle ? close : menu}
@@ -103,7 +107,6 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Mobile Nav */}
         {toggle && (
           <div className='sm:hidden absolute top-20 right-4 bg-[#0d0d1c]/90 backdrop-blur-md border border-[#915EFF44] rounded-lg px-6 py-4 z-50 min-w-[180px] shadow-md'>
             <ul className='flex flex-col gap-4 text-white font-medium'>
@@ -112,27 +115,28 @@ const Navbar = () => {
                   key={nav.id}
                   onClick={() => {
                     setToggle(false);
-                    handleNavClick(nav.id, nav.title);
+                    if (isHomePage) handleNavClick(nav.id, nav.title);
                   }}
                   className='hover:text-[#915EFF] transition-colors duration-300'
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
+                  {isHomePage ? (
+                    <a href={`#${nav.id}`}>{nav.title}</a>
+                  ) : (
+                    <Link to='/'>{nav.title}</Link>
+                  )}
                 </li>
               ))}
 
-              {/* Achievements (Mobile) */}
               <li>
-  <Link
-    to='/achievements'
-    onClick={() => setToggle(false)}
-    className='hover:text-[#915EFF] transition-colors duration-300'
-  >
-    Achievements
-  </Link>
-</li>
+                <Link
+                  to='/activities'
+                  onClick={() => setToggle(false)}
+                  className='hover:text-[#915EFF] transition-colors duration-300'
+                >
+                  Activities
+                </Link>
+              </li>
 
-
-              {/* Resume (Mobile) */}
               <li>
                 <a
                   href='/resume.pdf'

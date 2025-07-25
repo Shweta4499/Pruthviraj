@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { motion } from "framer-motion";
+import { motion } from "framer-motion";// Animation ke liye ..error aa rha hai par pb nhi de rha
 
 import RobotCanvas from "./canvas/Robot";
 
@@ -9,7 +9,7 @@ import { styles } from "../styles";
 const Hero = () => {
   const [showText, setShowText] = useState(false);
 
-
+//ye use hoga mobile responsiveness
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AchievementTimeline from "../components/AchievementTimeline";
+import { Navbar } from "../components";
 
 const AchievementPage = () => {
   return (
@@ -11,7 +12,6 @@ const AchievementPage = () => {
         to="/"
         className="inline-block mb-6 text-purple-300 hover:text-purple-500 font-semibold underline"
       >
-        ← Back to Home
       </Link>
 
       <AchievementTimeline />

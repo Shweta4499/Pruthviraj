@@ -9,7 +9,6 @@ const RobotModel = ({ isMobile }) => {
   const { scene, animations } = useGLTF("./robot/scene.glb");
   const { actions } = useAnimations(animations, group);
 
-  // Play idle animation if available
   useEffect(() => {
     const actionNames = Object.keys(actions);
     if (actionNames.length > 0) {
@@ -36,7 +35,7 @@ const RobotModel = ({ isMobile }) => {
   );
 };
 
-// === Main Robot Canvas Component ===
+// Main Robot Canvas Component
 const RobotCanvas = ({ isMobile: propIsMobile }) => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -79,11 +78,9 @@ const RobotCanvas = ({ isMobile: propIsMobile }) => {
           />
           <pointLight position={[0, 5, 10]} intensity={2.5} color="#00ffff" />
 
-          {/* Robot Model */}
           <RobotModel isMobile={mobile} />
         </Suspense>
 
-        {/* Optional: preload all assets */}
         <Preload all />
       </Canvas>
     </div>

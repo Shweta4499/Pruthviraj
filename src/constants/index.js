@@ -20,14 +20,58 @@ import {
 
 
 
+// Project 1: E Yantra
 import eyantra from "../assets/projects/e-yantra.jpg";
+import p11 from "../assets/projects/p11.jpg";
+import p12 from "../assets/projects/p12.jpg";
+import p13 from "../assets/projects/p13.jpg";
+
+// Project 2: Smart Security Bot
+import p21 from "../assets/projects/p21.jpg";
+import p22 from "../assets/projects/p22.jpg";
+import p23 from "../assets/projects/p23.jpg";
 import securityBot from "../assets/projects/security_bot.jpg";
+
+// Project 3: Third Eye
 import thirdEye from "../assets/projects/third_eye.jpg";
+import p31 from "../assets/projects/p31.png";
+import p32 from "../assets/projects/p32.png";
+import p33 from "../assets/projects/p33.png";
+
+// Project 4: Smart Security Camera
 import smartCam from "../assets/projects/smart_cam.jpg";
+import p41 from "../assets/projects/p41.jpg";
+import p42 from "../assets/projects/p42.jpg";
+import p43 from "../assets/projects/p43.jpg";
+
+// Project 5: Smart Socket
 import smartSocket from "../assets/projects/smart_socket.jpg";
+import p51 from "../assets/projects/p51.jpg";
+import p52 from "../assets/projects/p52.png";
+import p53 from "../assets/projects/p53.jpg";
+
+// Project 6: EasyML
 import easyML from "../assets/projects/easy_ml.png";
+import p61 from "../assets/projects/p61.png";
+import p62 from "../assets/projects/p62.png";
+import p63 from "../assets/projects/p63.png";
+
+// Project 7: Automated Waste Management
 import wasteMgmt from "../assets/projects/waste_mgmt.jpg";
+import p71 from "../assets/projects/p71.jpg";
+import p72 from "../assets/projects/p72.jpg";
+import p73 from "../assets/projects/p73.jpg";
+
+// Project 8: Honey Bee Monitoring
 import beeMonitor from "../assets/projects/bee_monitor.png";
+import p81 from "../assets/projects/p81.jpg";
+import p82 from "../assets/projects/p82.jpg";
+import p83 from "../assets/projects/p83.jpg";
+
+
+
+
+
 
 export const navLinks = [
     {
@@ -48,7 +92,7 @@ export const navLinks = [
 
    {
     id: "project", // ⬅️ points to Projects section
-    title: "Activities",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -146,6 +190,7 @@ const projects = [
       { name: "sensors", color: "pink-text-gradient" },
     ],
     image: eyantra,
+    images: [p11, p12, p13],
   },
   {
     name: "Smart Security Bot",
@@ -158,6 +203,7 @@ const projects = [
       { name: "automation", color: "pink-text-gradient" },
     ],
     image: securityBot,
+    images: [p21, p22, p23],
   },
   {
     name: "Third Eye",
@@ -170,6 +216,7 @@ const projects = [
       { name: "embedded", color: "pink-text-gradient" },
     ],
     image: thirdEye,
+    images: [p31, p32, p33],
   },
   {
     name: "Smart Security Camera",
@@ -182,6 +229,7 @@ const projects = [
       { name: "iot", color: "pink-text-gradient" },
     ],
     image: smartCam,
+    images: [p41, p42, p43],
   },
   {
     name: "Smart Socket",
@@ -194,6 +242,7 @@ const projects = [
       { name: "homeAutomation", color: "pink-text-gradient" },
     ],
     image: smartSocket,
+    images: [p51, p52, p53],
   },
   {
     name: "EasyML",
@@ -206,6 +255,7 @@ const projects = [
       { name: "streamlit", color: "pink-text-gradient" },
     ],
     image: easyML,
+    images: [p61, p62, p63],
   },
   {
     name: "Automated Waste Management System",
@@ -218,6 +268,7 @@ const projects = [
       { name: "firebase", color: "pink-text-gradient" },
     ],
     image: wasteMgmt,
+    images: [p71, p72, p73],
   },
   {
     name: "Honey Bee Monitoring System",
@@ -230,6 +281,7 @@ const projects = [
       { name: "dataLogging", color: "pink-text-gradient" },
     ],
     image: beeMonitor,
+    images: [p81, p82, p83],
   },
 ];
 export {services, technologies, experiences, projects };

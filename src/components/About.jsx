@@ -4,7 +4,6 @@ import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 
-// Animation container for staggering cards
 const containerVariants = {
   hidden: {},
   show: {
@@ -15,7 +14,6 @@ const containerVariants = {
   },
 };
 
-// Card animation based on direction
 const cardVariants = (direction) => ({
   hidden: {
     opacity: 0,
@@ -44,10 +42,8 @@ const ServiceCard = ({ index, title, icon }) => {
       }}
       className='group w-full sm:max-w-[45%] lg:max-w-[280px] bg-tertiary rounded-[20px] p-[1px] shadow-md relative overflow-hidden border border-[#915EFF]/20 hover:border-[#915EFF]/60 transition-all duration-300'
     >
-      {/* Glow Effect */}
       <div className="absolute inset-0 rounded-[20px] opacity-20 group-hover:opacity-40 bg-[#915EFF] blur-2xl animate-pulse z-0" />
 
-      {/* Card Content */}
       <div className='relative z-10 rounded-[20px] py-6 px-6 sm:px-10 min-h-[240px] sm:min-h-[280px] flex flex-col justify-center items-center'>
         <img src={icon} alt={title} className='w-14 h-14 object-contain mb-4' />
         <h3 className='text-white text-[18px] sm:text-[20px] font-bold text-center'>{title}</h3>
@@ -58,8 +54,14 @@ const ServiceCard = ({ index, title, icon }) => {
 
 const About = () => {
   return (
-    <>
-      {/* Intro Text */}
+    <><div className="w-full flex justify-center mt-2 mb-6">
+    <img
+      src="../profile1.jpg"
+      alt="Profile"
+      className="w-36 h-48 rounded-full object-cover border-4 border-[#915EFF] shadow-lg"
+    />
+  </div>
+  
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +73,6 @@ const About = () => {
         <h2 className={`${styles.sectionHeadText}`}>A Fusion of Code & Machines.</h2>
       </motion.div>
 
-      {/* About Paragraph */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -85,7 +86,6 @@ const About = () => {
         Whether it’s coding a robot or crafting immersive interfaces, I thrive on innovation and learning.
       </motion.p>
 
-      {/* Service Cards */}
       <motion.div className='mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6 sm:px-4 md:px-0 justify-items-center'
         variants={containerVariants}
         initial="hidden"

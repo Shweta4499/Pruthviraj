@@ -70,7 +70,6 @@ const Experience = () => {
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
-          {/* 🔥 Only show the first experience */}
           <ExperienceCard experience={experiences[0]} />
         </VerticalTimeline>
       </div>

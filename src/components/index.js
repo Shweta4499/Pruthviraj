@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import Navbar from "./Navbar";
 import About from "./About";
 import Experience from './Experience';
-import Works from "./Works";
+import Projects from "./Projects";
 import Contact from "./Contact";
 import CanvasLoader from "./Loader";
 import AchievementTimeline from './AchievementTimeline';
@@ -14,7 +14,7 @@ export {
   Navbar,
   About,
   Experience,
-  Works,
+  Projects,
   Contact,
   AchievementTimeline,
   CanvasLoader,
