@@ -27,7 +27,7 @@ const RobotModel = ({ isMobile }) => {
     <group
       ref={group}
       scale={isMobile ? 8 : 20}
-      position={isMobile ? [0.5, -6.2, 0] : [10, -4, 0]}
+      position={isMobile ? [0.5, -4.2, 0] : [10, -4, 0]}
       rotation={[0, 0, 0]}
     >
       <primitive object={scene} />

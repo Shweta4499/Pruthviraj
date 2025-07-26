@@ -94,8 +94,36 @@ const ProjectModal = ({ project, onClose }) => {
        
         <h2 className="text-2xl font-bold mb-3">{project.name}</h2>
         <p className="text-secondary text-[16px] leading-6 whitespace-pre-line">
-          {project.fullDescription}
+        {project.fullDescription
+  .trim()
+  .split('\n\n')
+  .map((para, idx) => (
+    <p key={idx} className="mb-4 leading-relaxed text-[15px] sm:text-[16px] text-secondary">
+      {para.split(/(\*\*.*?\*\*)/g).map((chunk, i) =>
+        chunk.startsWith('**') ? (
+          <strong key={i} className="text-purple font-semibold">
+            {chunk.replace(/\*\*/g, '')}
+          </strong>
+        ) : (
+          chunk
+        )
+      )}
+    </p>
+))}
+
         </p>
+        {project.link && (
+  <div className="mt-6">
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-lg font-semibold text-[#915EFF] hover:underline transition-all duration-200"
+    >
+      🔗 Project Link
+    </a>
+  </div>
+)}
 
        
         <div className="mt-5 relative w-full h-[250px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-lg bg-black">

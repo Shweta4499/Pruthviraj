@@ -1,17 +1,17 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const certificates = [
-  { img: "/certs/cert1.jpg", title: "React Mastery" },
-  { img: "/certs/cert2.jpg", title: "JavaScript Pro" },
-  { img: "/certs/cert3.jpg", title: "AI for Beginners" },
-  { img: "/certs/cert4.jpg", title: "CSS Wizard" },
-  { img: "/certs/cert5.jpg", title: "Full Stack Explorer" },
+const imageCertificates = [
+  ...Array.from({ length: 30 }, (_, i) => `/certs/${i + 1}.jpg`),
+  "/certs/1.png",
+  "/certs/2.png",
+  "/certs/1.jpeg",
+  "/certs/2.jpeg",
+  "/certs/3.jpeg",
 ];
 
 const Certificates = () => {
@@ -31,33 +31,26 @@ const Certificates = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          navigation={true} // ✅ Enable arrow buttons
+          navigation={true}
           slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[Autoplay, Navigation]}
           className="mySwiper pb-10"
         >
-          {certificates.map((cert, index) => (
+          {imageCertificates.map((imgSrc, index) => (
             <SwiperSlide key={index}>
               <div className="bg-gray-900 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
-                <div className="h-[240px] md:h-[300px] lg:h-[340px] flex items-center justify-center">
+                <div className="h-[240px] md:h-[300px] lg:h-[340px] flex items-center justify-center p-4">
                   <img
-                    src={cert.img}
-                    alt={cert.title}
+                    src={imgSrc}
+                    alt={`certificate-${index + 1}`}
                     loading="lazy"
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <p className="mt-4 text-center text-sm sm:text-base font-medium text-white pb-4">
-                  {cert.title}
-                </p>
               </div>
             </SwiperSlide>
           ))}

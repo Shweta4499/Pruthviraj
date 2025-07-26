@@ -26,73 +26,62 @@ const achievements = [
   {
     title: "E-Yantra Robotics Competition 2K23",
     description:
-      "Placed 3rd in this national robotics competition hosted by IIT Bombay.",
+"My team and I competed in the E-Yantra robotics competition in 2K23, and we placed third overall. IIT Bombay holds this competition every year.",
     image: "/achievements/eyantra.jpg",
   },
   {
     title: "Filed a Design Patent",
-    description:
-      "Filed a patent for an automated Weed Removal Machine using a robotic arm.",
+    description:"I designed a Weed Removal Machine that utilizes a robotic arm to efficiently remove weeds, helping farmers reduce manual labor and improve agricultural productivity. This system automates the weeding process, minimizing the need for chemical herbicides and promoting sustainable farming practices.",
     image: "/achievements/petant.png",
   },
   {
     title: "IIC Regional Innovation Contest Winner",
     description:
-      "Secured 1st prize showcasing the Third Eye project as a startup.",
-    image: "/achievements/iic.jpg",
+"I secured First Prize in the IIC Regional Meet Innovation Stall Contest, where I showcased my Third Eye project as a startup model. The event provided a great opportunity to present my innovation to industry experts and government bodies, receiving valuable feedback and recognition.",    image: "/achievements/iic.jpg",
   },
   {
     title: "Project Expo - DKTE 2K23",
     description:
-      "I represented my Third Eye project during a department-wide project expo for new first-year students.",
-    image: "/achievements/expo.jpg",
+"For incoming first-year students, there was a programme called मी राजवाडा बोलतोय on June 10th, 2k23. For To highlight the talent of the department through their projects, my CSE department organised a project expo. I spoke on behalf of my Third Eyeproject at that time.",    image: "/achievements/expo.jpg",
   },
   {
     title: "Institute level innovation and Prototype competition",
     description:
-      "My college Idea Lab hosted a competition to promote innovation and entrepreneurship. I presented a prototype at this event.",
-    image: "/achievements/ideavision.jpg",
+"In order to encourage students to launch new enterprises, my college is affiliated with Idea Lab, which organises institute-level invention and prototype competitions on 28 February 23. I participated in this contest.",    image: "/achievements/ideavision.jpg",
   },
   {
     title: "Am I Engineer?",
     description:
-      "As AISA president, I inaugurated this event and delivered a keynote on what it means to be a true engineer.",
-    image: "/achievements/amiengineer.jpg",
+"The Am I an Engineer? programme was the first event the Artificial Intelligence Student Association (AISA) organised. Given that I am the president of an AISA, I open this event, congratulate all the faculty and students there, and give a speech on the subject of who is an actual engineer is and how to be a good engineer.",    image: "/achievements/amiengineer.jpg",
   },
   {
     title: "Arduino Workshop",
     description:
-      "I conducted a one-day Arduino workshop covering hands-on hardware and programming experiments for second-year students.",
-    image: "/achievements/arduino.jpg",
+"I conducted a one-day workshop on Arduino because it is included in the second-year engineering curriculum and I am familiar with it; I conducted this workshop through AISA.I taught second-year students about Arduino programming and design. Nearly 10-12 Arduino experiments, including hardware and coding, were conducted by me.",    image: "/achievements/arduino.jpg",
   },
   {
     title: "Visit to Radhanagari Wildlife sanctuary",
     description:
-      "As part of EVS curriculum, I helped organize a class trip to the Radhanagari sanctuary where we learned about biodiversity.",
-    image: "/achievements/EVS.jpg",
+"The second-year environmental education curriculum includes an environmental visit. My class chose to visit a wildlife refuge as a destination, and I was given the task of making the necessary arrangements. We had a great time learning about many kinds of animals and plants.",    image: "/achievements/EVS.jpg",
   },
   {
     title: "Freshers party 2k23",
-    description:
-      "I managed and hosted the Freshers Party 2K23 for AI & AIDS students under AISA's leadership.",
-    image: "/achievements/EVS.jpg",
+    description:"AISA organises a variety of events, one of which being the Freshers Party 2K23 for CSE-AI and AIDS students. As AISA president, I was given full responsibility for this event.",
+    image: "/achievements/freshers.jfif",
   },
   {
     title: "Techsymposium Event 2k23",
     description:
-      "Led the organization of this flagship intercollege technical event as AISA President, handling sponsors to prize distribution.",
-    image: "/achievements/techsymposium.jpg",
+"The Techsymposium is an annual intercollegiate technical and non-technical event hosted by my college. As the current president of AISA, it was my duty to ensure that the event ran well from the collecting of sponsors through the final price distribution.",    image: "/achievements/techsymposium.jpg",
   },
   {
     title: "Unacademy's robotics competition",
-    description:
-      "Participated in Unacademy's robotics competition by developing a smart security bot.",
+    description:"I took part in Unacademy's robotics competition. Here, we must construct any type of bot. photograph everything behind the scenes.I developed smart security bot.",
     image: "/achievements/unacademy.jpg",
   },
   {
     title: "Annual gathering 2k23",
-    description:
-      "I hosted 'Taal', our college’s annual dance and award show. It was a great experience in public speaking.",
+    description:"IIT Bombay hosts a techfest and technical seminars every year. This year, I attended a technical presentation on Artificial intelligence and took part in Techfest.",
     image: "/achievements/taal.png",
   },
   {
@@ -104,7 +93,7 @@ const achievements = [
   {
     title: "Vision 2024",
     description:
-      "Showcased my final year project at Walchand College's national-level technical symposium 'Expotech'.",
+    "I participated in the National-Level Technical Symposium organized by Walchand College of Engineering in the Expotech event, where I showcased my final year project. It was a great opportunity to present my work, exchange ideas, and engage with like-minded innovators. 🚀🔬",
     image: "/achievements/exam.jpg",
   },
 ];
@@ -151,7 +140,7 @@ const AchievementTimeline = () => {
                   loading="lazy"
                   src={item.image}
                   alt={item.title}
-                  className="w-28 h-28 object-cover rounded-lg border-2 border-white"
+                  className="w-52 h-52 object-cover rounded-lg border-2 border-white"
                 />
                 <div>
                   <h3 className="text-xl font-bold mb-2">{item.title}</h3>
@@ -170,20 +159,7 @@ const AchievementTimeline = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="relative w-full max-w-[300px] h-[500px] overflow-hidden rounded-xl border-4 border-purple-600 shadow-xl">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={profileImages[currentProfileIndex]}
-                src={profileImages[currentProfileIndex]}
-                alt="Profile"
-                className="absolute w-full h-full object-cover rounded-xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-              />
-            </AnimatePresence>
-          </div>
+          
         </motion.div>
       </div>
     </section>

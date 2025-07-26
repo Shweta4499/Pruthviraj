@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { styles } from "../styles";// Custom tailwind style config
-import { navLinks } from "../constants";// Navbar ke link list
+import { styles } from "../styles";
+import { navLinks } from "../constants";
 import { file, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState(""); // Track karta hai kaunsa nav item active hai
-  const [toggle, setToggle] = useState(false);// Mobile menu open/close toggle
-  const [scrolled, setScrolled] = useState(false);// Scroll hone par navbar styling change karne ke liye
+  const [active, setActive] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const location = useLocation();
   const isHomePage = location.pathname === "/";
- // Scroll hone par navbar blue karne ka logic
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
@@ -19,9 +19,9 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // Navbar item pe click hone par us section pe smooth scroll
+
   const handleNavClick = (id, title) => {
-    setActive(title); // Clicked item ko active mark karna
+    setActive(title);
     if (isHomePage) {
       if (id === "home") {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -42,13 +42,13 @@ const Navbar = () => {
       `}
     >
       <div className='max-w-7xl mx-auto flex justify-between items-center py-4'>
-               {/* Logo & Name */}
-       <Link
+        {/* Logo */}
+        <Link
           to='/'
           className='flex items-center gap-2'
           onClick={() => {
             setActive("");
-            window.scrollTo(0, 0);// Home click karne pe top pe le jao
+            window.scrollTo(0, 0);
           }}
         >
           <img
@@ -57,10 +57,11 @@ const Navbar = () => {
             className='w-10 h-10 object-contain animate-glow-logo'
           />
           <p className='text-white text-xl font-extrabold tracking-wide'>
-            PRUTHVIRAJ <span className='hidden sm:inline-block'>| BANNE</span>
+            KulboyRaj
           </p>
         </Link>
- {/* Desktop Navigation */}
+
+        {/* Desktop Nav */}
         <div className='hidden sm:flex gap-10 items-center text-[17px] font-medium'>
           <ul className='flex gap-10'>
             {navLinks.map((nav) => (
@@ -74,13 +75,14 @@ const Navbar = () => {
                 {isHomePage ? (
                   <a href={`#${nav.id}`}>{nav.title}</a>
                 ) : (
-                  <Link to='/'>{nav.title}</Link>
+                  <Link to={`/#${nav.id}`}>{nav.title}</Link> // ✅ FIXED
                 )}
                 <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#915EFF] group-hover:w-full transition-all duration-300"></span>
               </li>
             ))}
           </ul>
- {/* Activities Page Link   yeh dusra route create krega jisse ye portfolio two pages ban gya*/}
+
+          {/* Activities Link */}
           <Link
             to='/activities'
             className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
@@ -98,6 +100,7 @@ const Navbar = () => {
           </a>
         </div>
 
+        {/* Mobile Menu Button */}
         <div className='sm:hidden flex items-center'>
           <img
             src={toggle ? close : menu}
@@ -107,6 +110,7 @@ const Navbar = () => {
           />
         </div>
 
+        {/* Mobile Dropdown */}
         {toggle && (
           <div className='sm:hidden absolute top-20 right-4 bg-[#0d0d1c]/90 backdrop-blur-md border border-[#915EFF44] rounded-lg px-6 py-4 z-50 min-w-[180px] shadow-md'>
             <ul className='flex flex-col gap-4 text-white font-medium'>
@@ -122,7 +126,7 @@ const Navbar = () => {
                   {isHomePage ? (
                     <a href={`#${nav.id}`}>{nav.title}</a>
                   ) : (
-                    <Link to='/'>{nav.title}</Link>
+                    <Link to={`/#${nav.id}`}>{nav.title}</Link> // ✅ FIXED
                   )}
                 </li>
               ))}
