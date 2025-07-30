@@ -152,7 +152,27 @@ const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [showAll, setShowAll] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [scrollYBeforeModal, setScrollYBeforeModal] = useState(0);
 
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';    // ← prevent scroll jumping
+      document.body.style.width = '100%';        // ← prevent page shrink
+    } else {
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
+    }
+  
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
+    };
+  }, [selectedProject]);
+  
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -178,19 +198,26 @@ const Projects = () => {
   }, [selectedProject]);
 
   const openModal = (project, index) => {
+    setScrollYBeforeModal(window.scrollY); // Save current scroll position
     setSelectedProject(project);
     setActiveIndex(index);
+    window.history.pushState({ modalOpen: true }, "");
   };
-
+  
   const closeModal = () => {
     setSelectedProject(null);
     setActiveIndex(null);
-
-    // Go back in history only if we added a modal state
+  
     if (window.history.state?.modalOpen) {
       window.history.back();
     }
+  
+    // Restore scroll position after modal unmount
+    setTimeout(() => {
+      window.scrollTo({ top: scrollYBeforeModal, behavior: "instant" });
+    }, 0);
   };
+  
 
   if (!mounted) return null;
 
