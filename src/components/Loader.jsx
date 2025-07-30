@@ -2,28 +2,28 @@ import { Html, useProgress } from "@react-three/drei";
 
 const CanvasLoader = () => {
   const { progress } = useProgress();
+
   return (
     <Html
-      as='div'
-      center
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
+      as="div"
+      position={[10, 0, 0]} // ⬅️ shifts the loader in 3D space to the right (adjust if needed)
+      zIndexRange={[10, 0]} // makes sure it's on top
+      transform // enables CSS transform styles
+      wrapperClass="loader-wrapper" // optional for debugging
     >
-      <span className='canvas-loader'></span>
-      <p
+      <div
         style={{
-          fontSize: 14,
-          color: "#F1F1F1",
-          fontWeight: 800,
-          marginTop: 40,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        {progress.toFixed(2)}%
-      </p>
+        <span className="canvas-loader w-10 h-10 border-4 border-t-transparent border-[#915EFF] rounded-full animate-spin"></span>
+        <p className="mt-6 text-sm font-extrabold text-[#F1F1F1]">
+          {progress.toFixed(2)}%
+        </p>
+      </div>
     </Html>
   );
 };

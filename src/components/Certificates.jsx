@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const imageCertificates = [
-  ...Array.from({ length: 30 }, (_, i) => `/certs/${i + 1}.jpg`),
+  ...Array.from({ length: 31 }, (_, i) => `/certs/${i + 1}.jpg`),
   "/certs/1.png",
   "/certs/2.png",
   "/certs/1.jpeg",

@@ -34,7 +34,7 @@ const ServiceCard = ({ index, title }) => {
         boxShadow: "0 0 25px rgba(145, 94, 255, 0.5)",
         transition: { duration: 0.4, ease: "easeInOut" },
       }}
-      className="group w-[100%] sm:w-full sm:max-w-[45%] lg:max-w-[260px] 
+      className="group w-full sm:w-full sm:max-w-[45%] lg:max-w-[260px] 
                  bg-tertiary rounded-[16px] p-[1px] shadow-md relative 
                  overflow-hidden border border-[#915EFF]/20 
                  hover:border-[#915EFF]/60 transition-all duration-300"
@@ -58,47 +58,69 @@ const About = () => {
       id="about"
       className="relative w-full min-h-screen overflow-hidden bg-black"
     >
-      {/* Background Image */}
+      {/* Background Image with responsive top margin */}
       <img
         src={bgImage}
         alt="background"
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className={`absolute top-[-24%] md:top-0 left-0 w-full h-full ${
+          isMobile ? "object-contain" : "object-cover"
+        } scale-[1.3] sm:scale-[1.2] md:scale-[1.1] lg:scale-[1.05] xl:scale-[1] z-0 transition-transform duration-500`}
       />
 
-      {/* Gradient overlay */}
+      {/* Gradient Overlays */}
+      <div className="absolute top-0 left-0 w-full h-[10%] bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-[20%] bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80 z-10 pointer-events-none" />
 
-      {/* Content */}
+      {/* Main Content */}
       <div className="relative z-20 w-full h-full py-20 px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center sm:text-left w-full"
-        >
-          <p className={`${styles.sectionSubText}`}>Who am I?</p>
-          <h2 className={`${styles.sectionHeadText}`}>A Fusion of Code & Machines.</h2>
-        </motion.div>
+        
+{/* Section Heading */}
+<motion.div
+  initial={{ opacity: 0, y: -30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="text-center w-full"
+>
+  <p className={`${styles.sectionSubText}`}>Who am I?</p>
+</motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-4 text-secondary text-[15px] sm:text-[17px] leading-[26px] sm:leading-[30px] max-w-5xl mx-auto text-center sm:text-left"
-        >
-          I'm a robotics M.Tech student with a CSE background, passionate about
-          building intelligent systems that blend hardware and software. My
-          interests lie in IoT, automation, and solving real-world problems
-          through technology. With hands-on experience in web development and
-          embedded systems, I aim to create scalable, futuristic applications.
-          Whether it’s coding a robot or crafting immersive interfaces, I thrive
-          on innovation and learning.
-        </motion.p>
+{/* Title and Text */}
+<motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 0.2, duration: 0.8 }}
+  viewport={{ once: true }}
+  className="mt-10 sm:mt-12 text-secondary text-[15px] sm:text-[17px] leading-relaxed sm:leading-loose max-w-3xl px-4 sm:px-0 mx-auto space-y-6"
+>
+  
+
+  <p>
+    Hello, I'm <strong className="text-white">Pruthviraj</strong>, a postgraduate student
+    specializing in <strong className="text-white">Automation and Robotics</strong> at DIAT Pune.
+    After completing my BTech in Artificial Intelligence, I developed a strong passion for solving
+    real-life problems using AI and robotics.
+  </p>
+
+  <p>
+    I enjoy exploring diverse domains, identifying unique challenges, and creating innovative,
+    AI-driven solutions with a focus on real-world impact. I am constantly seeking opportunities to
+    learn, grow, and collaborate with like-minded individuals to tackle complex problems. Let's
+    connect and work together to shape a smarter and more efficient future.
+  </p>
+
+  <p className="font-semibold text-white">
+    A true engineer is someone who identifies problems and crafts innovative solutions to solve
+    them...
+  </p>
+</motion.div>
+
+
+
 
         <motion.div
-          className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-items-center max-w-6xl mx-auto"
+          className="mt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"

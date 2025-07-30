@@ -35,18 +35,17 @@ const Hero = () => {
               transition={{ duration: 1 }}
               className="space-y-10"
             >
-              {/* Heading */}
-              <h1
-                className={`
-                  text-white font-extrabold 
-                  ${isMobile ? "text-[40px] leading-[1.3]" : "text-[80px] leading-[1.1]"}
-                `}
-              >
-                <span className="block">Hi,</span>
-                <span className="block text-[#915EFF]">I'm KulboyRaj</span>
-              </h1>
+             
+             <div>
+  <h1 className="text-white font-bold text-[30px] sm:text-[60px] leading-tight">
+    Hi,
+  </h1>
+  <h1 className="text-[#915EFF] font-bold text-[50px] sm:text-[80px] leading-tight">
+    I'm Pruthviraj
+  </h1>
+</div>
 
-              {/* Subtext */}
+
               <p
                 className={`
                   text-gray-300 
@@ -71,4 +70,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero; 

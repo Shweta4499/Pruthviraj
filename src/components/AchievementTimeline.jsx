@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Animation helper
 const fadeIn = (direction = "up", type = "tween", delay = 0, duration = 0.4) => ({
   hidden: {
     opacity: 0,
@@ -21,7 +20,6 @@ const fadeIn = (direction = "up", type = "tween", delay = 0, duration = 0.4) => 
   },
 });
 
-// Achievements list
 const achievements = [
   {
     title: "E-Yantra Robotics Competition 2K23",
@@ -35,10 +33,33 @@ const achievements = [
     image: "/achievements/petant.png",
   },
   {
+    title: "Filed a copyright patent",
+    description:"A patented intelligent home security camera system designed for real-time human detection and monitoring. It instantly alerts and notifies authenticated users upon unauthorized access, enhancing safety through immediate threat response. This innovation ensures secure and smart home surveillance with advanced automation and reliability.",
+    image: "/achievements/copy.jpg",
+  },
+
+  {
+    title: "Finalist – APJ Abdul Kalam Innovation Competition",
+    description:
+"During my first year of M.Tech, I proudly participated in the prestigious APJ Abdul Kalam Innovation Competition and was selected as a finalist for the second round. I was the only first-year student among a panel of Ph.D. participants, where I showcased my innovative project on Automated Waste Management System — a smart solution aimed at improving waste segregation and disposal through automation.",
+    image: "/achievements/kalam.jpeg",
+  },
+
+  {
     title: "IIC Regional Innovation Contest Winner",
     description:
-"I secured First Prize in the IIC Regional Meet Innovation Stall Contest, where I showcased my Third Eye project as a startup model. The event provided a great opportunity to present my innovation to industry experts and government bodies, receiving valuable feedback and recognition.",    image: "/achievements/iic.jpg",
+"I secured First Prize in the IIC Regional Meet Innovation Stall Contest, where I showcased my Third Eye project as a startup model. The event provided a great opportunity to present my innovation to industry experts and government bodies, receiving valuable feedback and recognition.",    
+image: "/achievements/iic.jpg",
   },
+
+  {
+    title: "Placement Katta: Guiding Future Engineers Towards Industry Readiness",
+    description:
+"Organized a Placement Katta session under the AISA Club for third-year and final-year students, focused on providing real-world project ideas and understanding current industry requirements. The session also covered essential career-building topics like networking strategies and the key technical and soft skills needed to succeed in todays competitive job market."  ,
+image: "/achievements/placement.JPG",
+
+},
+  
   {
     title: "Project Expo - DKTE 2K23",
     description:
@@ -98,7 +119,6 @@ const achievements = [
   },
 ];
 
-// Add your multiple profile images here
 const profileImages = [
   "../profile1.jpg",
   "/profile2.jpg",
@@ -122,7 +142,6 @@ const AchievementTimeline = () => {
       <h2 className="text-4xl font-bold text-center mb-14">🎖 Activities</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        {/* Timeline Cards - 2/3 width */}
         <div className="relative border-l-4 border-purple-600 pl-6 col-span-2">
           {achievements.map((item, index) => (
             <motion.div
@@ -151,7 +170,6 @@ const AchievementTimeline = () => {
           ))}
         </div>
 
-        {/* Profile Image Slideshow - right side, desktop only */}
         <motion.div
           className="hidden lg:flex items-start justify-center pt-6"
           initial={{ opacity: 0, x: 50 }}

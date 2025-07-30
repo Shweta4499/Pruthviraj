@@ -6,6 +6,7 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
+
 const ProjectCard = ({ index, project, onClick, isActive }) => (
   <motion.div
     variants={fadeIn("up", "tween", index * 0.15, 0.5)}
@@ -81,7 +82,7 @@ const ProjectModal = ({ project, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="relative bg-primary text-white pt-[80px] px-4 pb-6 mt-12 rounded-xl max-w-2xl w-full shadow-lg overflow-y-auto max-h-[90vh]"
+        className="relative bg-primary text-white pt-[100px] px-4 pb-6 mt-12 rounded-xl max-w-2xl w-full shadow-lg overflow-y-auto max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -146,7 +147,6 @@ const ProjectModal = ({ project, onClose }) => {
   );
 };
 
-
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -156,6 +156,41 @@ const Projects = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Handle back button to close modal
+  useEffect(() => {
+    const handlePopState = (e) => {
+      // Close modal if state was pushed
+      if (selectedProject) {
+        closeModal();
+      }
+    };
+
+    if (selectedProject) {
+      // Push state when modal opens
+      window.history.pushState({ modalOpen: true }, "");
+      window.addEventListener("popstate", handlePopState);
+    }
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedProject]);
+
+  const openModal = (project, index) => {
+    setSelectedProject(project);
+    setActiveIndex(index);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+    setActiveIndex(null);
+
+    // Go back in history only if we added a modal state
+    if (window.history.state?.modalOpen) {
+      window.history.back();
+    }
+  };
 
   if (!mounted) return null;
 
@@ -187,10 +222,7 @@ const Projects = () => {
               index={index}
               project={project}
               isActive={index === activeIndex}
-              onClick={() => {
-                setSelectedProject(project);
-                setActiveIndex(index);
-              }}
+              onClick={() => openModal(project, index)}
             />
           ))}
         </AnimatePresence>
@@ -210,14 +242,13 @@ const Projects = () => {
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
-          onClose={() => {
-            setSelectedProject(null);
-            setActiveIndex(null);
-          }}
+          onClose={closeModal}
         />
       )}
     </section>
   );
 };
+
+
 
 export default SectionWrapper(Projects, "project");
