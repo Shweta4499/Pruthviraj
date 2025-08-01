@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import StarsCanvas from "./canvas/Stars";
+import StarsCanvas from "./StarsCanvas";
 import { Canvas } from "@react-three/fiber";
 
 
@@ -162,7 +162,7 @@ const AchievementTimeline = () => {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 } items-center gap-6 md:gap-10`}
               >
-                <div className="flex flex-col sm:flex-row items-center bg-white dark:bg-[#1d1d2e] text-gray-800 dark:text-gray-100 rounded-xl shadow-lg overflow-hidden w-full max-w-4xl">
+                <div className="flex flex-col sm:flex-row items-center  dark:bg-[#1d1d2e] text-gray-800 dark:text-gray-100 rounded-xl shadow-lg overflow-hidden w-full max-w-4xl">
                   <img
                     src={item.image}
                     alt={item.title}
