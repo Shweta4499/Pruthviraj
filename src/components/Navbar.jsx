@@ -111,14 +111,22 @@ const Navbar = () => {
                 <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#915EFF] group-hover:w-full transition-all duration-300"></span>
               </li>
             ))}
+
+<li
+  onClick={() => {
+    setActive("Activities");
+  }}
+  className={`relative group cursor-pointer ${
+    active === "Activities" ? "text-white" : "text-gray-400"
+  } hover:text-[#915EFF] transition-colors duration-300`}
+>
+  <Link to='/activities'>Activities</Link>
+  <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#915EFF] group-hover:w-full transition-all duration-300"></span>
+</li>
           </ul>
 
-          <Link
-            to='/activities'
-            className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
-          >
-            Activities
-          </Link>
+  
+
 
           <a
             href='/resume.pdf'

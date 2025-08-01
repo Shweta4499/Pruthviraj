@@ -30,7 +30,7 @@ const ProjectCard = ({ index, project, onClick, isActive }) => (
     />
   </div>
 
-  <div className="mt-1 flex-1 flex flex-col justify-center">
+  <div className="mt-3 flex-1 flex flex-col justify-center text-center">
     <div>
       <h3 className="text-white font-bold text-[20px] sm:text-[22px] leading-snug">
         {project.name}

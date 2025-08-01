@@ -5,16 +5,9 @@ import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const imageCertificates = [
-  ...Array.from({ length: 27 }, (_, i) => `/certs/${i + 1}.jpg`),
-  "/certs/1.png",
-  "/certs/2.png",
-  "/certs/1.jpeg",
-  "/certs/2.jpeg",
-  "/certs/3.jpeg",
-];
+import { certificates } from "../constants"; // ✅ import here
 
-const totalCertificates = imageCertificates.length;
+const totalCertificates = certificates.length;
 
 const Certificates = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -38,7 +31,7 @@ const Certificates = () => {
           navigation={true}
           slidesPerView={1}
           onSlideChange={(swiper) =>
-            setCurrentIndex(((swiper.realIndex + 1 - 1 + totalCertificates) % totalCertificates) + 1)
+            setCurrentIndex(((swiper.realIndex + totalCertificates) % totalCertificates) + 1)
           }
           breakpoints={{
             640: { slidesPerView: 2 },
@@ -47,7 +40,7 @@ const Certificates = () => {
           modules={[Autoplay, Navigation]}
           className="mySwiper pb-6"
         >
-          {imageCertificates.map((imgSrc, index) => (
+          {certificates.map((imgSrc, index) => (
             <SwiperSlide key={index}>
               <div className="bg-gray-900 rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
                 <div className="h-[240px] md:h-[300px] lg:h-[340px] flex items-center justify-center p-4">

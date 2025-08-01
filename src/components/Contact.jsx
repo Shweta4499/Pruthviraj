@@ -133,27 +133,7 @@ return (
           </button>
         </form>
 
-        <motion.div className="w-full mt-10 flex justify-center items-center flex-col gap-4 bg-black-200 py-6 rounded-lg">
-          <p className="text-white text-lg font-semibold mb-2">Connect with me</p>
-          <div className="flex gap-5">
-            {[
-              { href: "https://github.com/KulboyRaj", src: github, alt: "GitHub" },
-              { href: "https://linkedin.com/in/pruthviraj-banne", src: linkedin, alt: "LinkedIn" },
-              { href: "https://twitter.com/KulboyRaj", src: twitter, alt: "Twitter" },
-              { href: "https://youtube.com/@pruthvirajbanne229", src: youtube, alt: "YouTube" },
-              { href: "https://facebook.com/vijaya.banne", src: facebook, alt: "Facebook" },
-              { href: "https://instagram.com/kulboyraj", src: instagram, alt: "Instagram" },
-            ].map(({ href, src, alt }) => (
-              <a key={alt} href={href} target="_blank" rel="noopener noreferrer">
-                <img
-                  src={src}
-                  alt={alt}
-                  className="w-14 h-14 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"
-                />
-              </a>
-            ))}
-          </div>
-        </motion.div>
+       
       </motion.div>
 
       <motion.div
@@ -167,6 +147,25 @@ return (
   <p>© 2023 KBR Solutions. All rights reserved.</p>
   <p className="mt-1">📧 pruthvirajbanne2001@gmail.com</p>
   <p className="mt-1">📞 +91 78208 66043</p>
+  <div className="mt-6 flex justify-center items-center flex-wrap gap-4">
+    {[
+      { href: "https://github.com/KulboyRaj", src: github, alt: "GitHub" },
+      { href: "https://linkedin.com/in/pruthviraj-banne", src: linkedin, alt: "LinkedIn" },
+      { href: "https://twitter.com/KulboyRaj", src: twitter, alt: "Twitter" },
+      { href: "https://youtube.com/@pruthvirajbanne229", src: youtube, alt: "YouTube" },
+      { href: "https://facebook.com/vijaya.banne", src: facebook, alt: "Facebook" },
+      { href: "https://instagram.com/kulboyraj", src: instagram, alt: "Instagram" },
+    ].map(({ href, src, alt }) => (
+      <a key={alt} href={href} target="_blank" rel="noopener noreferrer">
+        <img
+          src={src}
+          alt={alt}
+          className="w-10 h-10 rounded-full border border-white p-1 filter invert hover:scale-110 transition-all duration-300"
+        />
+      </a>
+    ))}
+  </div>
+
 </div>
 
   </div>

@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar"; // Make sure this path is correct
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToHash from "./components/ScrollToHash";
+import { StarsCanvas } from "./components";
 const App = () => {
   return (
     <><ScrollToTop /> 
@@ -11,7 +12,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/activities" element={<AchievementPage />} />
+        <Route path="/activities" element={<AchievementPage />}/>
       </Routes>
     </>
   );

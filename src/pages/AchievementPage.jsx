@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AchievementTimeline from "../components/AchievementTimeline";
 import { Navbar } from "../components";
+import StarsCanvas from "../components/StarsCanvas"; 
 
 const AchievementPage = () => {
   return (
@@ -15,6 +16,8 @@ const AchievementPage = () => {
       </Link>
 
       <AchievementTimeline />
+      <StarsCanvas />
+
     </div>
   );
 };
