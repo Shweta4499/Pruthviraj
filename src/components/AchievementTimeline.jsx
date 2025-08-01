@@ -1,5 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import StarsCanvas from "./canvas/Stars";
+import { Canvas } from "@react-three/fiber";
+
 
 // Animation variant
 const fadeIn = (direction = "up", type = "tween", delay = 0, duration = 0.6) => ({
@@ -99,7 +102,7 @@ image: "/achievements/placement.JPG",
   },
   {
     title: "Annual gathering 2k23",
-    description:"IIT Bombay hosts a techfest and technical seminars every year. This year, I attended a technical presentation on Artificial intelligence and took part in Techfest.",
+    description:"Every year, the college celebrates the price distribution and dance variety show. 'Taal' was the name given to it this year. That evening, I host. For me, it was a wonderful experience.",
     image: "/achievements/taal.png",
   },
   {
@@ -118,9 +121,14 @@ image: "/achievements/placement.JPG",
 
 const AchievementTimeline = () => {
   return (
-    <section className="px-6 py-16 bg-[#090909] dark:bg-[#000000] relative">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+    <section className="relative w-full min-h-screen overflow-hidden bg-[#000000]">
+      {/* Starry background layer */}
+      <div className="absolute inset-0 z-0">
+        <StarsCanvas />
+      </div>
+
+      {/* Foreground content */}
+      <div className="relative z-10 px-6 py-16 max-w-6xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -128,14 +136,17 @@ const AchievementTimeline = () => {
           variants={fadeIn("up", "spring", 0, 0.6)}
           className="text-center mb-12"
         >
-          <p className="text-lg text-gray-200 font-semibold">Activities</p>
-          <h2 className="text-4xl font-bold text-white">My Journey</h2>
+          <div className="flex justify-center">
+  <div className="flex items-center gap-3 mb-2">
+    <img src="/trophy.svg" alt="Trophy" className="w-15 h-14" />
+    <h2 className="text-5xl font-bold text-white">Activities</h2>
+  </div>
+</div>
+
+
+          
         </motion.div>
 
-        {/* Mobile-only vertical timeline line */}
-        <div className="absolute top-40 bottom-10 left-5 w-1 bg-blue-200 rounded-full md:hidden z-0" />
-
-        {/* Achievement Cards */}
         <div className="flex flex-col gap-20 relative z-10 py-6">
           {achievements.map((item, index) => {
             const isLeft = index % 2 === 0;
@@ -151,20 +162,17 @@ const AchievementTimeline = () => {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 } items-center gap-6 md:gap-10`}
               >
-                {/* Dot for mobile timeline */}
-                <div className="absolute left-0 md:hidden w-4 h-4 bg-white border-4 border-blue-600 rounded-full z-10" />
-
-                {/* Card */}
                 <div className="flex flex-col sm:flex-row items-center bg-white dark:bg-[#1d1d2e] text-gray-800 dark:text-gray-100 rounded-xl shadow-lg overflow-hidden w-full max-w-4xl">
-                <img
-  src={item.image}
-  alt={item.title}
-  className="w-52 h-52 object-content rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none border-4 border-blue-600 mb-4 sm:mb-0"
-/>
-
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-52 h-52 object-content rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none border-4 border-blue-600 mb-4 sm:mb-0"
+                  />
                   <div className="p-5 text-start sm:text-left">
                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">{item.description}</p>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               </motion.div>

@@ -43,6 +43,14 @@ const Navbar = () => {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, [isHomePage]);
 
+  useEffect(() => {
+    // Clear highlight when not on homepage
+    if (!isHomePage) {
+      setActive("");
+    }
+  }, [isHomePage]);
+  
+
   const handleNavClick = (id, title) => {
     setActive(title);
     if (isHomePage) {

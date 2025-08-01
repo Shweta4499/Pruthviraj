@@ -35,6 +35,10 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!form.name || !form.email) {
+      alert("Please fill in both your name and email.");
+      return;
+    }
     setLoading(true);
     setTriggerLaunch(true);
 
@@ -159,6 +163,12 @@ return (
         <SpaceshipCanvas isTyping={isTyping} triggerLaunch={triggerLaunch} />
       </motion.div>
     </div>
+    <div className="mt-10 text-center text-sm text-gray-400">
+  <p>© 2023 KBR Solutions. All rights reserved.</p>
+  <p className="mt-1">📧 pruthvirajbanne2001@gmail.com</p>
+  <p className="mt-1">📞 +91 78208 66043</p>
+</div>
+
   </div>
 );
 }

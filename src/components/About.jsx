@@ -100,14 +100,16 @@ const About = () => {
             I enjoy exploring diverse domains, identifying unique challenges, and creating innovative,
             AI-driven solutions with a focus on real-world impact.I am constantly seeking opportunities to learn, grow, and collaborate with like-minded individuals to tackle complex problems. Let's connect and work together to shape a smarter and more efficient future.
           </p>
-          <p className="text-white italic text-xl font-semibold">
-            A true engineer is someone who identifies problems and crafts innovative solutions to solve them...
-          </p>
+          <p className="text-white text-2xl italic font-semibold font-merienda">
+  A true engineer is someone who identifies problems and crafts innovative solutions to solve them. . . .
+</p>
+
+
         </motion.div>
 
         {/* Responsive Card Grid */}
         <motion.div
-          className="mt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center max-w-6xl mx-auto px-2"
+          className="mt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center max-w-6xl mx-auto px-2 bg-black"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"

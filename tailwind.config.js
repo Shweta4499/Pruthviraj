@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      // tailwind.config.js
+fontFamily: {
+  merienda: ['Merienda', 'cursive'],
+},
+
       
       dropShadow: {
         icy: "0 0 5px #80eaff",
