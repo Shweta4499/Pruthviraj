@@ -128,7 +128,7 @@ const AchievementTimeline = () => {
           variants={fadeIn("up", "spring", 0, 0.6)}
           className="text-center mb-12"
         >
-          <p className="text-lg text-gray-200 font-semibold">Achievements</p>
+          <p className="text-lg text-gray-200 font-semibold">Activities</p>
           <h2 className="text-4xl font-bold text-white">My Journey</h2>
         </motion.div>
 

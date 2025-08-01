@@ -19,11 +19,11 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   useEffect(() => {
     if (!isHomePage) return;
-  
+
     const sections = document.querySelectorAll("section[id]");
-  
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -38,12 +38,10 @@ const Navbar = () => {
       },
       { threshold: 0.35 }
     );
-  
+
     sections.forEach((section) => observer.observe(section));
-  
     return () => sections.forEach((section) => observer.unobserve(section));
   }, [isHomePage]);
-  
 
   const handleNavClick = (id, title) => {
     setActive(title);
@@ -56,7 +54,7 @@ const Navbar = () => {
       }
     }
   };
-  
+
   return (
     <nav
       className={`
@@ -66,8 +64,8 @@ const Navbar = () => {
           : "bg-transparent"}
       `}
     >
-<div className='max-w-7xl mx-auto flex justify-between items-center py-3 md:py-4'>
-{/* Logo */}
+      <div className='max-w-7xl mx-auto flex justify-between items-center py-3 md:py-4'>
+        {/* Logo */}
         <Link
           to='/'
           className='flex items-center gap-2'
@@ -87,8 +85,8 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className='hidden md:flex gap-6 md:gap-8 lg:gap-10 items-center text-[16px] md:text-[17px] font-medium'>
-        <ul className='flex gap-10'>
+        <div className='hidden lg:flex gap-6 lg:gap-8 xl:gap-10 items-center text-[15px] lg:text-[16px] font-medium'>
+          <ul className='flex gap-8'>
             {navLinks.map((nav) => (
               <li
                 key={nav.id}
@@ -100,14 +98,13 @@ const Navbar = () => {
                 {isHomePage ? (
                   <a href={`#${nav.id}`}>{nav.title}</a>
                 ) : (
-                  <Link to={`/#${nav.id}`}>{nav.title}</Link> // ✅ FIXED
+                  <Link to={`/#${nav.id}`}>{nav.title}</Link>
                 )}
                 <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#915EFF] group-hover:w-full transition-all duration-300"></span>
               </li>
             ))}
           </ul>
 
-          {/* Activities Link */}
           <Link
             to='/activities'
             className='text-gray-400 hover:text-[#915EFF] transition-colors duration-300 border border-[#915EFF50] px-3 py-1 rounded-lg'
@@ -126,8 +123,8 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className='md:hidden flex items-center'>
-        <img
+        <div className='lg:hidden flex items-center'>
+          <img
             src={toggle ? close : menu}
             alt='menu'
             className='w-7 h-7 cursor-pointer'
@@ -137,7 +134,7 @@ const Navbar = () => {
 
         {/* Mobile Dropdown */}
         {toggle && (
-          <div className='md:hidden absolute top-20 right-4 bg-[#0d0d1c]/90 backdrop-blur-md border border-[#915EFF44] rounded-lg px-6 py-4 z-50 min-w-[180px] shadow-md'>
+          <div className='lg:hidden absolute top-20 right-4 bg-[#0d0d1c]/90 backdrop-blur-md border border-[#915EFF44] rounded-lg px-6 py-4 z-50 min-w-[180px] max-w-[90vw] shadow-md'>
             <ul className='flex flex-col gap-4 text-white font-medium'>
               {navLinks.map((nav) => (
                 <li
@@ -151,7 +148,7 @@ const Navbar = () => {
                   {isHomePage ? (
                     <a href={`#${nav.id}`}>{nav.title}</a>
                   ) : (
-                    <Link to={`/#${nav.id}`}>{nav.title}</Link> // ✅ FIXED
+                    <Link to={`/#${nav.id}`}>{nav.title}</Link>
                   )}
                 </li>
               ))}
