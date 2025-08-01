@@ -4,7 +4,7 @@ import { Preload, useGLTF, useAnimations } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 // === Robot Model Component ===
-const RobotModel = ({ isMobile }) => {
+const RobotModel = ({ deviceType }) => {
   const group = useRef();
   const { scene, animations } = useGLTF("./robot/scene.glb");
   const { actions } = useAnimations(animations, group);
@@ -23,34 +23,38 @@ const RobotModel = ({ isMobile }) => {
     }
   });
 
+  // Device-based transform
+  const { scale, position } = (() => {
+    if (deviceType === "mobile") return { scale: 8, position: [0.5, -4.2, 0] };
+    if (deviceType === "tablet") return { scale: 12, position: [4, -4.1, 0] };
+    return { scale: 20, position: [10, -4, 0] }; // desktop
+  })();
+
   return (
-    <group
-      ref={group}
-      scale={isMobile ? 8 : 20}
-      position={isMobile ? [0.5, -4.2, 0] : [10, -4, 0]}
-      rotation={[0, 0, 0]}
-    >
+    <group ref={group} scale={scale} position={position} rotation={[0, 0, 0]}>
       <primitive object={scene} />
     </group>
   );
 };
 
-// Main Robot Canvas Component
-const RobotCanvas = ({ isMobile: propIsMobile }) => {
-  const [isMobile, setIsMobile] = useState(false);
+// === Main Canvas ===
+const RobotCanvas = () => {
+  const [deviceType, setDeviceType] = useState("desktop");
 
-  // Detect mobile screen size
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 640px)");
-    setIsMobile(mediaQuery.matches);
+    const checkDevice = () => {
+      const width = window.innerWidth;
+      if (width <= 640) return "mobile";
+      if (width <= 1024) return "tablet";
+      return "desktop";
+    };
 
-    const handler = (e) => setIsMobile(e.matches);
-    mediaQuery.addEventListener("change", handler);
+    const updateDeviceType = () => setDeviceType(checkDevice());
 
-    return () => mediaQuery.removeEventListener("change", handler);
+    updateDeviceType();
+    window.addEventListener("resize", updateDeviceType);
+    return () => window.removeEventListener("resize", updateDeviceType);
   }, []);
-
-  const mobile = propIsMobile ?? isMobile;
 
   return (
     <div className="absolute inset-0 w-full h-full z-0">
@@ -59,13 +63,17 @@ const RobotCanvas = ({ isMobile: propIsMobile }) => {
         shadows
         dpr={[1, 2]}
         camera={{
-          position: mobile ? [0, 2, 12] : [-1, 4, 22],
-          fov: mobile ? 75 : 50,
+          position:
+            deviceType === "mobile"
+              ? [0, 2, 12]
+              : deviceType === "tablet"
+              ? [0, 3, 18]
+              : [-1, 4, 22],
+          fov: deviceType === "mobile" ? 75 : 50,
         }}
         gl={{ preserveDrawingBuffer: true }}
       >
         <Suspense fallback={<CanvasLoader />}>
-          {/* Lighting */}
           <ambientLight intensity={0.6} />
           <directionalLight position={[0, 20, 10]} intensity={2} castShadow />
           <spotLight
@@ -78,7 +86,7 @@ const RobotCanvas = ({ isMobile: propIsMobile }) => {
           />
           <pointLight position={[0, 5, 10]} intensity={2.5} color="#00ffff" />
 
-          <RobotModel isMobile={mobile} />
+          <RobotModel deviceType={deviceType} />
         </Suspense>
 
         <Preload all />

@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
-const fadeIn = (direction = "up", type = "tween", delay = 0, duration = 0.4) => ({
+// Animation variant
+const fadeIn = (direction = "up", type = "tween", delay = 0, duration = 0.6) => ({
   hidden: {
     opacity: 0,
-    y: direction === "up" ? 40 : 0,
-    x: direction === "left" ? 40 : 0,
+    y: direction === "up" ? 30 : 0,
+    x: direction === "left" ? -30 : direction === "right" ? 30 : 0,
   },
   show: {
     opacity: 1,
-    x: 0,
     y: 0,
-    transition: {
-      type,
-      delay,
-      duration,
-      ease: "easeOut",
-    },
+    x: 0,
+    transition: { type, delay, duration },
   },
 });
 
+// ... Your achievements array here ...
 const achievements = [
   {
     title: "E-Yantra Robotics Competition 2K23",
@@ -119,66 +116,61 @@ image: "/achievements/placement.JPG",
   },
 ];
 
-const profileImages = [
-  "../profile1.jpg",
-  "/profile2.jpg",
-  "/profile3.jpg",
-];
-
 const AchievementTimeline = () => {
-  const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProfileIndex((prev) =>
-        prev === profileImages.length - 1 ? 0 : prev + 1
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="max-w-6xl mx-auto px-4 py-6 mt-2 scroll-smooth">
-      <h2 className="text-4xl font-bold text-center mb-14">🎖 Activities</h2>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div className="relative border-l-4 border-purple-600 pl-6 col-span-2">
-          {achievements.map((item, index) => (
-            <motion.div
-              key={index}
-              variants={fadeIn("up", "tween", index * 0.05, 0.4)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="mb-10 relative"
-            >
-              <div className="absolute w-5 h-5 bg-purple-600 rounded-full left-[-13px] top-2.5"></div>
-
-              <div className="bg-[#1d1836] text-white rounded-xl shadow-md p-5 flex flex-col md:flex-row gap-6 items-center max-w-3xl">
-                <img
-                  loading="lazy"
-                  src={item.image}
-                  alt={item.title}
-                  className="w-52 h-52 object-cover rounded-lg border-2 border-white"
-                />
-                <div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-300 text-sm">{item.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
+    <section className="px-6 py-16 bg-[#090909] dark:bg-[#000000] relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
         <motion.div
-          className="hidden lg:flex items-start justify-center pt-6"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
+          variants={fadeIn("up", "spring", 0, 0.6)}
+          className="text-center mb-12"
         >
-          
+          <p className="text-lg text-gray-200 font-semibold">Achievements</p>
+          <h2 className="text-4xl font-bold text-white">My Journey</h2>
         </motion.div>
+
+        {/* Mobile-only vertical timeline line */}
+        <div className="absolute top-40 bottom-10 left-5 w-1 bg-blue-200 rounded-full md:hidden z-0" />
+
+        {/* Achievement Cards */}
+        <div className="flex flex-col gap-20 relative z-10 py-6">
+          {achievements.map((item, index) => {
+            const isLeft = index % 2 === 0;
+
+            return (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "spring", index * 0.1, 0.6)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                className={`relative flex flex-col ${
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                } items-center gap-6 md:gap-10`}
+              >
+                {/* Dot for mobile timeline */}
+                <div className="absolute left-0 md:hidden w-4 h-4 bg-white border-4 border-blue-600 rounded-full z-10" />
+
+                {/* Card */}
+                <div className="flex flex-col sm:flex-row items-center bg-white dark:bg-[#1d1d2e] text-gray-800 dark:text-gray-100 rounded-xl shadow-lg overflow-hidden w-full max-w-4xl">
+                <img
+  src={item.image}
+  alt={item.title}
+  className="w-52 h-52 object-content rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none border-4 border-blue-600 mb-4 sm:mb-0"
+/>
+
+                  <div className="p-5 text-start sm:text-left">
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">{item.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

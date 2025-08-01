@@ -19,6 +19,31 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+    if (!isHomePage) return;
+  
+    const sections = document.querySelectorAll("section[id]");
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const visibleId = entry.target.getAttribute("id");
+            const navItem = navLinks.find((nav) => nav.id === visibleId);
+            if (navItem) {
+              setActive(navItem.title);
+            }
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+  
+    sections.forEach((section) => observer.observe(section));
+  
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, [isHomePage]);
+  
 
   const handleNavClick = (id, title) => {
     setActive(title);
@@ -31,7 +56,7 @@ const Navbar = () => {
       }
     }
   };
-
+  
   return (
     <nav
       className={`
@@ -41,8 +66,8 @@ const Navbar = () => {
           : "bg-transparent"}
       `}
     >
-      <div className='max-w-7xl mx-auto flex justify-between items-center py-4'>
-        {/* Logo */}
+<div className='max-w-7xl mx-auto flex justify-between items-center py-3 md:py-4'>
+{/* Logo */}
         <Link
           to='/'
           className='flex items-center gap-2'
@@ -62,8 +87,8 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className='hidden sm:flex gap-10 items-center text-[17px] font-medium'>
-          <ul className='flex gap-10'>
+        <div className='hidden md:flex gap-6 md:gap-8 lg:gap-10 items-center text-[16px] md:text-[17px] font-medium'>
+        <ul className='flex gap-10'>
             {navLinks.map((nav) => (
               <li
                 key={nav.id}
@@ -101,8 +126,8 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className='sm:hidden flex items-center'>
-          <img
+        <div className='md:hidden flex items-center'>
+        <img
             src={toggle ? close : menu}
             alt='menu'
             className='w-7 h-7 cursor-pointer'
@@ -112,7 +137,7 @@ const Navbar = () => {
 
         {/* Mobile Dropdown */}
         {toggle && (
-          <div className='sm:hidden absolute top-20 right-4 bg-[#0d0d1c]/90 backdrop-blur-md border border-[#915EFF44] rounded-lg px-6 py-4 z-50 min-w-[180px] shadow-md'>
+          <div className='md:hidden absolute top-20 right-4 bg-[#0d0d1c]/90 backdrop-blur-md border border-[#915EFF44] rounded-lg px-6 py-4 z-50 min-w-[180px] shadow-md'>
             <ul className='flex flex-col gap-4 text-white font-medium'>
               {navLinks.map((nav) => (
                 <li

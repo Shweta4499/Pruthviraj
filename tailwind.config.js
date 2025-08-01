@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     extend: {
+      
       dropShadow: {
         icy: "0 0 5px #80eaff",
       },

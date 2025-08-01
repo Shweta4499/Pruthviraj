@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 
@@ -14,7 +14,11 @@ const imageCertificates = [
   "/certs/3.jpeg",
 ];
 
+const totalCertificates = imageCertificates.length;
+
 const Certificates = () => {
+  const [currentIndex, setCurrentIndex] = useState(1);
+
   return (
     <section id="certificates" className="py-20 text-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -33,12 +37,15 @@ const Certificates = () => {
           }}
           navigation={true}
           slidesPerView={1}
+          onSlideChange={(swiper) =>
+            setCurrentIndex(((swiper.realIndex + 1 - 1 + totalCertificates) % totalCertificates) + 1)
+          }
           breakpoints={{
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
           modules={[Autoplay, Navigation]}
-          className="mySwiper pb-10"
+          className="mySwiper pb-6"
         >
           {imageCertificates.map((imgSrc, index) => (
             <SwiperSlide key={index}>
@@ -55,6 +62,11 @@ const Certificates = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Centered Slide Counter */}
+        <div className="text-center mt-4 text-sm text-gray-400">
+          {currentIndex} / {totalCertificates}
+        </div>
       </div>
     </section>
   );

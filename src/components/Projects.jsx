@@ -18,36 +18,42 @@ const ProjectCard = ({ index, project, onClick, isActive }) => (
     }`}
   >
     <div
-      className="bg-tertiary p-5 rounded-2xl w-full max-w-[360px] cursor-pointer"
-      onClick={onClick}
-    >
-      <div className="relative w-full h-[220px] sm:h-[250px] rounded-2xl overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.name}
-          loading="lazy"
-          className="w-full h-full object-contain rounded-2xl bg-black"
-          />
-      </div>
+  className="bg-tertiary p-5 rounded-2xl w-full max-w-[360px] min-h-[400px] flex flex-col justify-between shadow-md hover:shadow-xl transition duration-300 cursor-pointer"
+  onClick={onClick}
+>
+  <div className="relative w-full h-[250px] sm:h-[250px] rounded-xl overflow-hidden bg-black">
+    <img
+      src={project.image}
+      alt={project.name}
+      loading="lazy"
+      className="w-full h-full object-content"
+    />
+  </div>
 
-      <div className="mt-5">
-        <h3 className="text-white font-bold text-[24px]">{project.name}</h3>
-        <p className="mt-2 text-secondary text-[14px]">
-          {project.description}
-        </p>
-      </div>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <p
-            key={`${project.name}-${tag.name}`}
-            className={`text-[14px] ${tag.color}`}
-          >
-            #{tag.name}
-          </p>
-        ))}
-      </div>
+  <div className="mt-1 flex-1 flex flex-col justify-center">
+    <div>
+      <h3 className="text-white font-bold text-[20px] sm:text-[22px] leading-snug">
+        {project.name}
+      </h3>
+      <p className="mt-2 text-secondary text-[14px] sm:text-[15px] leading-[1.5] line-clamp-3">
+        {project.description}
+      </p>
+      
     </div>
+
+    <div className="mt-1 flex flex-wrap gap-2">
+      {project.tags.map((tag) => (
+        <p
+          key={`${project.name}-${tag.name}`}
+          className={`text-[13px] sm:text-[14px] ${tag.color}`}
+        >
+          #{tag.name}
+        </p>
+      ))}
+    </div>
+  </div>
+</div>
+
   </motion.div>
 );
 
@@ -158,8 +164,8 @@ const Projects = () => {
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';    // ← prevent scroll jumping
-      document.body.style.width = '100%';        // ← prevent page shrink
+      document.body.style.position = 'fixed';    
+      document.body.style.width = '100%';       
     } else {
       document.body.style.overflow = 'auto';
       document.body.style.position = 'static';
@@ -177,17 +183,14 @@ const Projects = () => {
     setMounted(true);
   }, []);
 
-  // Handle back button to close modal
   useEffect(() => {
     const handlePopState = (e) => {
-      // Close modal if state was pushed
       if (selectedProject) {
         closeModal();
       }
     };
 
     if (selectedProject) {
-      // Push state when modal opens
       window.history.pushState({ modalOpen: true }, "");
       window.addEventListener("popstate", handlePopState);
     }
@@ -198,7 +201,7 @@ const Projects = () => {
   }, [selectedProject]);
 
   const openModal = (project, index) => {
-    setScrollYBeforeModal(window.scrollY); // Save current scroll position
+    setScrollYBeforeModal(window.scrollY); 
     setSelectedProject(project);
     setActiveIndex(index);
     window.history.pushState({ modalOpen: true }, "");
@@ -212,7 +215,6 @@ const Projects = () => {
       window.history.back();
     }
   
-    // Restore scroll position after modal unmount
     setTimeout(() => {
       window.scrollTo({ top: scrollYBeforeModal, behavior: "instant" });
     }, 0);
@@ -225,35 +227,43 @@ const Projects = () => {
 
   return (
     <section className="relative z-10 pt-10 sm:pt-18 px-4 max-w-7xl mx-auto">
-      <motion.div variants={textVariant()} initial="hidden" animate="show">
-        <p className={styles.sectionSubText}>My work</p>
-        <h2 className={styles.sectionHeadText}>Projects</h2>
-      </motion.div>
+      <motion.div
+  variants={textVariant()}
+  initial="hidden"
+  animate="show"
+  className="text-center" // ✅ Add this line
+>
+  <p className={`${styles.sectionSubText} mx-auto`}>My work</p>
+  <h2 className={`${styles.sectionHeadText} mx-auto`}>Projects</h2>
+</motion.div>
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        initial="hidden"
-        animate="show"
-        className="mt-5 text-gray-300 text-[17px] max-w-3xl leading-[30px]"
-      >
-        Following projects showcase my skills and experience through real-world
-        examples. Click on any card to learn more about each project’s scope and
-        functionality.
-      </motion.p>
 
-      <div className="mt-6 flex flex-wrap gap-5 justify-center">
-        <AnimatePresence>
-          {visibleProjects.map((project, index) => (
-            <ProjectCard
-              key={`project-${index}`}
-              index={index}
-              project={project}
-              isActive={index === activeIndex}
-              onClick={() => openModal(project, index)}
-            />
-          ))}
-        </AnimatePresence>
-      </div>
+<motion.p
+  variants={fadeIn("", "", 0.1, 1)}
+  initial="hidden"
+  animate="show"
+  className="mt-5 text-gray-300 text-[17px] max-w-3xl leading-[30px] text-center mx-auto"
+>
+  Following projects showcase my skills and experience through real-world
+  examples. Click on any card to learn more about each project’s scope and
+  functionality.
+</motion.p>
+
+
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <AnimatePresence>
+    {visibleProjects.map((project, index) => (
+      <ProjectCard
+        key={`project-${index}`}
+        index={index}
+        project={project}
+        isActive={index === activeIndex}
+        onClick={() => openModal(project, index)}
+      />
+    ))}
+  </AnimatePresence>
+</div>
+
 
       {projects.length > 6 && (
         <div className="flex justify-center mt-6">
@@ -278,4 +288,4 @@ const Projects = () => {
 
 
 
-export default SectionWrapper(Projects, "project");
+export default Projects;

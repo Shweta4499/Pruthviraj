@@ -175,7 +175,7 @@ const experiences = [
 const projects = [
   {
     name: "E Yantra",
-    description: "IIT Bombay robotics competition.",
+    description: "E Yantra -> Swachhta Bot e-yantra competition ",
     fullDescription: `
     🏆 I am proud to announce that I secured the **3rd position** at the prestigious **e-Yantra Robotics Competition** (Swachhta Bot 🤖) organized by **IIT Bombay** 😊.
     
@@ -219,7 +219,7 @@ const projects = [
 
   {
     name: "Automated Entry Management System",
-    description: "A robotic arm-based gate system that automates vehicle entry using a camera and microphone . ",
+    description: "Mtech Sem project  ",
     fullDescription: `
   🚀 Excited to share our latest innovation – the **Automated Entry Management System**!
   
@@ -289,7 +289,7 @@ const projects = [
   
   {
     name: "Smart Ammunition Monitoring System",
-    description: "A LoRaWAN-enabled embedded system that tracks live ammunition count, transmits real-time data to control centers, and enhances tactical battlefield awareness.",
+    description: "MILIT officer project",
     fullDescription: `
   🚀 **Smart Ammunition Monitoring System for Tactical Operations**  
   🔫📶 *Precision. Awareness. Action.*
