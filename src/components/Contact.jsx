@@ -144,7 +144,7 @@ return (
       </motion.div>
     </div>
     <div className="mt-10 text-center text-sm text-gray-400">
-  <p>© 2023 KBR Solutions. All rights reserved.</p>
+  <p>© 2025 KBR Solutions. All rights reserved.</p>
   <p className="mt-1">📧 pruthvirajbanne2001@gmail.com</p>
   <p className="mt-1">📞 +91 78208 66043</p>
   <div className="mt-6 flex justify-center items-center flex-wrap gap-4">

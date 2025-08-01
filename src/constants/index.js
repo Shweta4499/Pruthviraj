@@ -163,20 +163,7 @@ const experiences = [
   ],
 },
 
-{
-  title: "Trainee Software Engineer",
-  company_name: "Xperate",
-  icon: xperate, 
-  iconBg: "#383E56",
-  date: "Feb 2024 - May 2024",
-  points: [
-    "Worked on full-stack web applications using Ember.js and Laravel.",
-    "Developed and maintained dynamic user interfaces using JavaScript and Ember.js.",
-    "Built scalable backend APIs with PHP and Laravel framework.",
-    "Managed data storage and queries efficiently using MySQL.",
-    "Collaborated with senior developers in an Agile environment to deliver high-quality software."
-  ],
-}
+
 
 ];
 

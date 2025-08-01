@@ -29,7 +29,7 @@ const AchievementTimeline = () => {
       
 
       {/* Foreground content */}
-      <div className="relative z-10 px-6 py-16 max-w-6xl mx-auto">
+      <div className="relative z-10  max-w-6xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="show"
