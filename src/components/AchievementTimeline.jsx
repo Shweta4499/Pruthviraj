@@ -63,14 +63,17 @@ const AchievementTimeline = () => {
                   isLeft ? "md:flex-row" : "md:flex-row-reverse"
                 } items-center gap-6 md:gap-10`}
               >
-                <div className="flex flex-col sm:flex-row items-center  dark:bg-[#1d1d2e] text-gray-100 dark:text-white-100 rounded-xl shadow-lg overflow-hidden w-full max-w-4xl">
+<div
+  className="flex flex-col sm:flex-row items-center rounded-xl shadow-lg overflow-hidden w-full max-w-4xl"
+  style={{ background: "#1d1836", color: "white" }}
+>
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-52 h-52 object-content rounded-t-xl sm:rounded-l-xl sm:rounded-tr-none border-4 border-blue-600 mb-4 sm:mb-0"
                   />
-                  <div className="p-5 text-start sm:text-left">
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+<div className="p-5 text-center sm:text-center flex flex-col justify-center items-center">
+<h3 className="text-xl font-bold mb-2">{item.title}</h3>
                     <p className="text-sm text-white-700 dark:text-gray-300">
                       {item.description}
                     </p>
