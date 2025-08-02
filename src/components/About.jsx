@@ -109,7 +109,7 @@ const About = () => {
 
         {/* Responsive Card Grid */}
         <motion.div
-          className="mt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center max-w-6xl mx-auto px-2 bg-black"
+          className="mt-20 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center max-w-6xl mx-auto px-2 "
           variants={containerVariants}
           initial="hidden"
           whileInView="show"

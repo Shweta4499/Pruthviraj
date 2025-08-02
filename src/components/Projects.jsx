@@ -41,7 +41,7 @@ const ProjectCard = ({ index, project, onClick, isActive }) => (
       
     </div>
 
-    <div className="mt-1 flex flex-wrap gap-2">
+    <div className="mt-1 flex flex-wrap gap-2 justify-center">
       {project.tags.map((tag) => (
         <p
           key={`${project.name}-${tag.name}`}
