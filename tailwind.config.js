@@ -9,6 +9,11 @@ export default {
       // tailwind.config.js
 fontFamily: {
   merienda: ['Merienda', 'cursive'],
+  playfair: ['"Playfair Display"', 'serif'],
+  greatvibes: ['"Great Vibes"', 'cursive'],
+  allura: ['"Allura"', 'cursive'],
+
+
 },
 
       

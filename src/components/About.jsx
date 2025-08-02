@@ -100,9 +100,10 @@ const About = () => {
             I enjoy exploring diverse domains, identifying unique challenges, and creating innovative,
             AI-driven solutions with a focus on real-world impact.I am constantly seeking opportunities to learn, grow, and collaborate with like-minded individuals to tackle complex problems. Let's connect and work together to shape a smarter and more efficient future.
           </p>
-          <p className="text-white text-2xl italic font-semibold font-merienda">
-  A true engineer is someone who identifies problems and crafts innovative solutions to solve them. . . .
+          <p className="text-white text-5xl font-allura italic">
+  "A true engineer is someone who identifies problems and crafts innovative solutions to solve them..."
 </p>
+
 
 
         </motion.div>

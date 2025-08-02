@@ -44,11 +44,14 @@ const Navbar = () => {
   }, [isHomePage]);
 
   useEffect(() => {
-    // Clear highlight when not on homepage
     if (!isHomePage) {
-      setActive("");
+      if (location.pathname === "/activities") {
+        setActive("Activities");
+      } else {
+        setActive("");
+      }
     }
-  }, [isHomePage]);
+  }, [location.pathname, isHomePage]);
   
 
   const handleNavClick = (id, title) => {
