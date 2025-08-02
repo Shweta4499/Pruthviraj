@@ -582,7 +582,7 @@ const achievements = [
     image: "/achievements/eyantra.jpg",
   },
   {
-    title: "Filed a Design Patent",
+    title: "Filed a design patent",
     description:"I designed a Weed Removal Machine that utilizes a robotic arm to efficiently remove weeds, helping farmers reduce manual labor and improve agricultural productivity. This system automates the weeding process, minimizing the need for chemical herbicides and promoting sustainable farming practices.",
     image: "/achievements/petant.png",
   },
@@ -595,7 +595,7 @@ const achievements = [
   {
     title: "Finalist – APJ Abdul Kalam Innovation Competition",
     description:
-'During my first year of M.Tech, I proudly participated in the prestigious APJ Abdul Kalam Innovation Competition and was selected as a finalist for the second round. I was the only first-year student among a panel of Ph.D. participants, where I showcased my innovative project on "Automated Waste Management System "— a smart solution aimed at improving waste segregation and disposal through automation.',
+'During my first year of M.Tech, I proudly participated in the prestigious APJ Abdul Kalam Innovation Competition and was selected as a finalist for the second round. I was the only first-year student among a panel of Ph.D. participants, where I showcased my innovative project on " Automated Waste Management System "— a smart solution aimed at improving waste segregation and disposal through automation.',
     image: "/achievements/kalam.jpeg",
   },
 
@@ -617,7 +617,7 @@ image: "/achievements/placement.JPG",
   {
     title: "Project Expo - DKTE 2K23",
     description:
-'For incoming first-year students, there was a programme called "मी राजवाडा बोलतोय" on June 10th, 2k23. For To highlight the talent of the department through their projects, my CSE department organised a project expo. I spoke on behalf of my "Third Eye " project at that time.',    image: "/achievements/expo.jpg",
+'For incoming first-year students, there was a programme called " मी राजवाडा बोलतोय " on June 10th, 2k23. For To highlight the talent of the department through their projects, my CSE department organised a project expo. I spoke on behalf of my " Third Eye " project at that time.',    image: "/achievements/expo.jpg",
   },
   {
     title: "Institute level innovation and Prototype competition",
@@ -627,7 +627,7 @@ image: "/achievements/placement.JPG",
   {
     title: "Am I Engineer?",
     description:
-'The "Am I an Engineer?" programme was the first event the Artificial Intelligence Student Association (AISA) organised. Given that I am the president of an AISA, I open this event, congratulate all the faculty and students there, and give a speech on the subject of "who is an actual engineer is and how to be a good engineer."',    image: "/achievements/amiengineer.jpg",
+'The " Am I an Engineer? " programme was the first event the Artificial Intelligence Student Association (AISA) organised. Given that I am the president of an AISA, I open this event, congratulate all the faculty and students there, and give a speech on the subject of " who is an actual engineer is and how to be a good engineer."',    image: "/achievements/amiengineer.jpg",
   },
   {
     title: "Arduino Workshop",
@@ -647,7 +647,7 @@ image: "/achievements/placement.JPG",
   {
     title: "Techsymposium Event 2k23",
     description:
-'The "Techsymposium" is an annual intercollegiate technical and non-technical event hosted by my college. As the current president of AISA, it was my duty to ensure that the event ran well from the collecting of sponsors through the final price distribution.',    image: "/achievements/techsymposium.jpg",
+'The " Techsymposium " is an annual intercollegiate technical and non-technical event hosted by my college. As the current president of AISA, it was my duty to ensure that the event ran well from the collecting of sponsors through the final price distribution.',    image: "/achievements/techsymposium.jpg",
   },
   {
     title: "Unacademy's robotics competition",
@@ -662,7 +662,7 @@ image: "/achievements/placement.JPG",
   {
     title: "Techfest 2k23",
     description:
-'IIT Bombay hosts a techfest and technical seminars every year. This year, I attended a technical presentation on "Artificial intelligence" and took part in Techfest.',    image: "/achievements/techfest.jpeg",
+'IIT Bombay hosts a techfest and technical seminars every year. This year, I attended a technical presentation on " Artificial intelligence " and took part in Techfest.',    image: "/achievements/techfest.jpeg",
   },
   {
     title: "Vision 2024",
