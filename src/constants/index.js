@@ -183,8 +183,8 @@ export const certificates = [...jpgCerts, ...pngCerts, ...jpegCerts];
 
 const projects = [
   {
-    name: "E Yantra",
-    description: "E Yantra -> Swachhta Bot e-yantra competition ",
+    name: "Swachhta Bot ",
+    description:"E-yantra competition ",
     fullDescription: `
     🏆 I am proud to announce that I secured the **3rd position** at the prestigious **e-Yantra Robotics Competition** (Swachhta Bot 🤖) organized by **IIT Bombay** 😊.
     
@@ -215,9 +215,9 @@ const projects = [
     
      link: "https://www.linkedin.com/posts/pruthvirajbanne_eyantra-fpga-verilog-activity-7049744444106891264-0hBy?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkiHQEBpjMd2fo09-VjPQfqEcTvQB5wh8I",
       tags: [
-      { name: "arduino", color: "blue-text-gradient" },
-      { name: "embedded", color: "green-text-gradient" },
-      { name: "sensors", color: "pink-text-gradient" },
+      { name: "fpga", color: "blue-text-gradient" },
+      { name: "embeddedSystems", color: "green-text-gradient" },
+      { name: "verilog", color: "pink-text-gradient" },
     ],
     image: eyantra,
     images: [p11, p12, p13],
@@ -252,9 +252,9 @@ const projects = [
     image: p101,
     images: [p101, p102, p103],
     tags: [
-      { name: "Automation", color: "blue-text-gradient" },
-      { name: "ComputerVision", color: "green-text-gradient" },
-      { name: "Embedded", color: "pink-text-gradient" },
+      { name: "robotics", color: "blue-text-gradient" },
+      { name: "automation", color: "green-text-gradient" },
+      { name: "dynamics", color: "pink-text-gradient" },
     ],
  
     link: "https://www.linkedin.com/posts/pruthvirajbanne_innovation-robotics-automation-activity-7346436560994668544-YoL1?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkiHQEBpjMd2fo09-VjPQfqEcTvQB5wh8I" // Optional
@@ -284,11 +284,12 @@ const projects = [
     `,
     
     link :"https://www.linkedin.com/posts/pruthvirajbanne_deeplearning-machinelearning-opencv-activity-7063536275047297024-U8IW?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkiHQEBpjMd2fo09-VjPQfqEcTvQB5wh8I",
-      tags: [
-      { name: "iot", color: "blue-text-gradient" },
-      { name: "assistiveTech", color: "green-text-gradient" },
-      { name: "embedded", color: "pink-text-gradient" },
+    tags: [
+      { name: "ai", color: "blue-text-gradient" },
+      { name: "computerVision", color: "green-text-gradient" },
+      { name: "perception", color: "pink-text-gradient" },
     ],
+    
     image: thirdEye,
     images: [p31, p32, p33],
   },
@@ -328,10 +329,11 @@ const projects = [
   This system minimizes manual intervention and provides command centers with **actionable intelligence** — a step toward **smart soldier support systems** in modern warfare.
     `,
     tags: [
-      { name: "LoRaWAN", color: "blue-text-gradient" },
-      { name: "Embedded", color: "green-text-gradient" },
-      { name: "DefenseTech", color: "pink-text-gradient" }
+      { name: "defenceTech", color: "blue-text-gradient" },
+      { name: "lorawan", color: "green-text-gradient" },
+      { name: "iot", color: "pink-text-gradient" },
     ],
+    
     image: p91,
     images: [p91, p92, p91],
     link: "https://www.linkedin.com/posts/pruthvirajbanne_defensetech-lorawan-smartweapons-activity-7319733078468251648-TRXt?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkiHQEBpjMd2fo09-VjPQfqEcTvQB5wh8I" // Optional project link
@@ -370,11 +372,12 @@ Let’s connect and discuss how innovations like this can reshape entire industr
 
    link:"https://www.linkedin.com/posts/pruthvirajbanne_smartcities-wastemanagement-innovation-activity-7267893436828012545-2_lQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkiHQEBpjMd2fo09-VjPQfqEcTvQB5wh8I",
    
-      tags: [
-      { name: "iot", color: "blue-text-gradient" },
-      { name: "automation", color: "green-text-gradient" },
-      { name: "firebase", color: "pink-text-gradient" },
-    ],
+   tags: [
+    { name: "iot", color: "blue-text-gradient" },
+    { name: "automation", color: "green-text-gradient" },
+    { name: "smartCity", color: "pink-text-gradient" },
+  ],
+  
     image: wasteMgmt,
     images: [p71, p72, p73],
   },
@@ -411,11 +414,12 @@ With EasyML, companies can integrate ML into their workflows to optimize operati
 Would love to hear your thoughts and feedback! 🚀
 `,
 
-    tags: [
-      { name: "ml", color: "blue-text-gradient" },
-      { name: "python", color: "green-text-gradient" },
-      { name: "streamlit", color: "pink-text-gradient" },
-    ],
+tags: [
+  { name: "machineLearning", color: "blue-text-gradient" },
+  { name: "python", color: "green-text-gradient" },
+  { name: "autoML", color: "pink-text-gradient" },
+],
+
     image: easyML,
     images: [p61, p62, p63],
   },
@@ -451,10 +455,11 @@ Would love to hear your thoughts and feedback! 🚀
 
    
     tags: [
-      { name: "opencv", color: "blue-text-gradient" },
-      { name: "python", color: "green-text-gradient" },
+      { name: "yolov8", color: "blue-text-gradient" },
+      { name: "objectDetection", color: "green-text-gradient" },
       { name: "iot", color: "pink-text-gradient" },
     ],
+    
     image: smartCam,
     images: [p41, p42, p43],
   },
@@ -480,9 +485,10 @@ Would love to hear your thoughts and feedback! 🚀
 
     tags: [
       { name: "robotics", color: "blue-text-gradient" },
-      { name: "camera", color: "green-text-gradient" },
-      { name: "automation", color: "pink-text-gradient" },
+      { name: "automation", color: "green-text-gradient" },
+      { name: "arduino", color: "pink-text-gradient" },
     ],
+    
     image: securityBot,
     images: [p21, p22, p23],
   },
@@ -521,11 +527,12 @@ Everyone deserves to live with **freedom and dignity** — and the **Third Eye**
 `,
 
     link:"https://www.linkedin.com/posts/pruthvirajbanne_linkedincommunity-smartsolution-homeautomation-activity-7091650440320184320--YU8?utm_source=share&utm_medium=member_desktop&rcm=ACoAADkiHQEBpjMd2fo09-VjPQfqEcTvQB5wh8I",
-      tags: [
-      { name: "esp8266", color: "blue-text-gradient" },
-      { name: "iot", color: "green-text-gradient" },
-      { name: "homeAutomation", color: "pink-text-gradient" },
+    tags: [
+      { name: "iot", color: "blue-text-gradient" },
+      { name: "homeAutomation", color: "green-text-gradient" },
+      { name: "esp8266", color: "pink-text-gradient" },
     ],
+    
     image: smartSocket,
     images: [p51, p52, p53],
   },
@@ -553,11 +560,12 @@ This project focuses on developing a smart, IoT-based solution to help beekeeper
 🌍 This project is a step toward combining **sustainable agriculture** with **smart monitoring technologies** to protect one of our most important pollinators.
 `,
 
-    tags: [
-      { name: "sensor", color: "blue-text-gradient" },
-      { name: "iot", color: "green-text-gradient" },
-      { name: "dataLogging", color: "pink-text-gradient" },
-    ],
+tags: [
+  { name: "sensorFusion", color: "blue-text-gradient" },
+  { name: "iot", color: "green-text-gradient" },
+  { name: "automation", color: "pink-text-gradient" },
+],
+
     image: beeMonitor,
     images: [p81, p82, p83],
   },
